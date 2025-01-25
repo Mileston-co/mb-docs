@@ -8,16 +8,16 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN pnpm install
+RUN npm install
 
 # Copy the rest of the application code to the working directory
 COPY . .
 
 # Build the Docusaurus site
-RUN pnpm run build
+RUN npm run build
 
 # Expose the port the app runs on
 EXPOSE 3000
 
 # Start the Docusaurus server
-CMD ["pnpm", "run", "serve"]
+CMD ["npm", "run", "serve"]
