@@ -31,7 +31,7 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'Powered by Mileston',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
