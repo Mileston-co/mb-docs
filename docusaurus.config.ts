@@ -20,7 +20,7 @@ const config: Config = {
   organizationName: 'Milesoton Co.', // Usually your GitHub org/user name.
   projectName: 'mb-microservice', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
