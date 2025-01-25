@@ -80,7 +80,7 @@ const config: Config = {
           position: 'left',
           label: 'Quick Start',
         },
-        {to: '/blog', label: 'Doc', position: 'left'},
+        {to: '/docs/category/api-keys', label: 'Doc', position: 'left'},
         {
           href: 'https://github.com/mileston-co/mb-docs',
           label: 'GitHub',
@@ -121,8 +121,8 @@ const config: Config = {
           title: 'More',
           items: [
             {
-              label: 'Blog',
-              to: '/blog',
+              label: 'Docs',
+              to: '/docs/api-keys',
             },
             {
               label: 'GitHub',

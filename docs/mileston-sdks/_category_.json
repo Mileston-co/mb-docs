@@ -2,6 +2,7 @@
   "label": "Mileston SDKs",
   "position": 3,
   "link": {
-    "type": "generated-index"
+    "type": "generated-index",
+    "description": "Learn more about Mileston SDKs."
   }
 }
