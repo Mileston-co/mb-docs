@@ -2,46 +2,123 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Quick Start
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Welcome to Mileston Payments Integration! 🎉 We’re thrilled to have you onboard! Integrating Mileston Payments is simple, fun, and opens your app to the world of crypto payments. Let’s dive in and create your **first crypto payment link** in just a few steps!
 
-## Getting Started
+---
 
-Get started by **creating a new site**.
+## Quick Start: Create Your First Crypto Payment Link 🚀
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+### Step 1: Create an Account 📝  
+Head over to [business.mileston.co](https://business.mileston.co) and sign up for your Mileston Business account.  
 
-### What you'll need
+This will give you access to our powerful dashboard where all the magic happens. ✨  
 
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+---
 
-## Generate a new site
+### Step 2: Get Your API Key 🔑  
+Navigate to the **Developers** tab in the dashboard to generate your **API key**. You’ll find two types of keys:  
 
-Generate a new Docusaurus site using the **classic template**.
+- **Test API Key** (for testnet, no real money involved):  
+  `Mileston_TEST_hshshs7y373djdsdj...`
+  
+- **Live API Key** (for mainnet, real monetary value):  
+  `Mileston_PROD_773hsiakakgddh...`
 
-The classic template will automatically be added to your project after you run the command:
+⚠️ **Pro Tip:**  
+To generate the right key:  
+- Switch to **Test mode** in the dashboard for the **Test API key**.  
+- Switch to **Live mode** for the **Live API key**.  
+
+---
+
+### Step 3: Install the Backend SDK 🛠️  
+Install our backend SDK to start creating payment links like a pro. Here's how:  
 
 ```bash
-npm init docusaurus@latest my-website classic
+npm install mileston-payments
 ```
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+Then, write some magic code like this:  
 
-The command also installs all necessary dependencies you need to run Docusaurus.
+```javascript
+import { PaymentLink } from 'mileston-payments';
 
-## Start your site
+const apiKey = 'your-api-key'; // Your API key
+const businessId = 'your-business-id'; // Your business ID
 
-Run the development server:
+// Initialize PaymentLink, Invoice, or RecurringPayment as needed
+const paymentLink = new PaymentLink(apiKey, businessId);
+
+// Generate a payment link
+const link = await paymentLink.create({
+  amount: 100, // Amount in your preferred currency
+  currency: 'USD',
+  description: 'Crypto Payment Example',
+});
+console.log('Payment link created:', link);
+```
+
+🔍 **Where to find your `businessId`?**  
+You can grab your Business ID from the dropdown menu under your business logo in the dashboard.  
+
+---
+
+### Step 4: Use the Payment Link in Your Frontend ✨  
+Now that you’ve created a payment link, let’s add it to your frontend!  
+
+You can either:  
+1. Build your own custom button, or  
+2. Use our **mileston-payment-client SDK** for seamless integration.  
+
+First, install the client SDK:  
 
 ```bash
-cd my-website
-npm run start
+npm install mileston-payment-client
 ```
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+Then, use our prebuilt payment button:  
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+```jsx
+import { PayButton } from 'mileston-payment-client';
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+const App = () => (
+  <PayButton
+    paymentUrl="https://checkout.mileston.co/payment"
+    onPaymentComplete={() => console.log('Payment complete!')}
+    onPaymentDataReceived={(data) => console.log('Payment data received:', data)}
+    onPaymentError={(error) => console.error('Payment error:', error)}
+    style={{ backgroundColor: 'green', color: 'white' }}
+  >
+    Pay Now
+  </PayButton>
+);
+```
+
+👀 **Why use the `PayButton`?**  
+It handles everything: payment, verification, and an awesome user experience. You just sit back and sip coffee. ☕  
+
+---
+
+### Step 5: Keep API Keys Safe! 🛡️  
+**Important:** Always use the backend SDK for API keys. Never expose your keys in the frontend, or you’ll have a bad time.  
+
+---
+
+### GitHub Repos 📂  
+Check out our SDKs for more details and examples:  
+- [mileston-payments (Backend SDK)](https://github.com/Mileston-co/mileston-payments)  
+- [mileston-payment-client (Frontend SDK)](https://github.com/Mileston-co/mileston-payment-client)  
+
+---
+
+🎉 **Congrats!**  
+You’ve just created your first crypto payment link with Mileston Payments! High five! 🙌  
+
+---
+
+## What’s Next?  
+Dive deeper into each tool and feature in the [full documentation](https://docs.mileston.co) to unlock even more power.  
+
+Happy coding, and may your payments always succeed on the first try! 💪🔥
