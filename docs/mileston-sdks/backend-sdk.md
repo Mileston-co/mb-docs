@@ -34,7 +34,7 @@ Import the SDK and initialize it with your **API Key** and **Business ID**.
 import { PaymentLink, Invoice, RecurringPayment } from 'mileston-payments';
 
 const apiKey = 'your-api-key';             // Get this from your dashboard
-const businessId = 'your-business-id';     // Unique ID for your business
+const businessId = 'your-business-id';     // Get this from the modal that pops when you click your profile
 
 const paymentLink = new PaymentLink(apiKey, businessId);
 const invoice = new Invoice(apiKey, businessId);
