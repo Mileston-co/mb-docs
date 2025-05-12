@@ -1,0 +1,38 @@
+.features {
+  padding: 4rem 0;
+  background: #f9f9f9;
+}
+
+.featureCard {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.featureCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.featureIcon {
+  margin-bottom: 1rem;
+}
+
+.featureSvg {
+  width: 80px;
+  height: 80px;
+}
+
+.featureContent {
+  text-align: center;
+}
+
+.featureTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.featureDescription {
+  font-size: 1rem;
+  font-weight: 300;
+  color: #555;
+}
