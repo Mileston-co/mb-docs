@@ -28,7 +28,7 @@ For instance:
 Use the **Backend SDK** to generate a secure payment link.
 
 ```typescript
-import { PaymentLink } from 'mileston-payments';
+import { PaymentLink } from "mileston-payments";
 
 const apiKey = process.env.MILESTON_API_KEY; // Never hardcode your API keys!
 const businessId = process.env.BUSINESS_ID;
@@ -36,13 +36,13 @@ const businessId = process.env.BUSINESS_ID;
 const paymentLink = new PaymentLink(apiKey, businessId);
 
 const createPaymentPayload = {
-  amount: '100.00',
-  description: 'Premium Subscription',
-  customerEmail: 'user@example.com',
+  amount: "100.00",
+  description: "Premium Subscription",
+  customerEmail: "user@example.com",
 };
 
 const paymentLinkResponse = await paymentLink.create(createPaymentPayload);
-console.log('Payment Link:', paymentLinkResponse.paymentLink);
+console.log("Payment Link:", paymentLinkResponse.paymentLink);
 ```
 
 ### Step 2: Use the Payment Link in the Frontend
@@ -50,20 +50,20 @@ console.log('Payment Link:', paymentLinkResponse.paymentLink);
 Pass the generated payment link to your frontend. With the **Client SDK**, you can make the user experience smoother by embedding or displaying the link.
 
 ```javascript
-import React from 'react';
-import { PayButton } from 'mileston-payment-client';
+import React from "react";
+import { PayButton } from "mileston-payment-client";
 
 const paymentLink = "https://checkout.mileston.co/payment"; // Link generated in the backend
 
 <PayButton
-    onPaymentComplete={() => console.log('Payment complete!')}
-    onPaymentDataReceived={(data) => console.log('Payment data received:', data)}
-    onPaymentError={(error) => console.error('Payment error:', error)}
-    paymentUrl={paymentLink}
-    style={{ backgroundColor: 'green', color: 'white' }}
+  onPaymentComplete={() => console.log("Payment complete!")}
+  onPaymentDataReceived={(data) => console.log("Payment data received:", data)}
+  onPaymentError={(error) => console.error("Payment error:", error)}
+  paymentUrl={paymentLink}
+  style={{ backgroundColor: "green", color: "white" }}
 >
-    Pay Now
-</PayButton>
+  Pay Now
+</PayButton>;
 ```
 
 ---
@@ -71,16 +71,20 @@ const paymentLink = "https://checkout.mileston.co/payment"; // Link generated in
 ## 🛡️ Security Best Practices
 
 1. **Keep Your API Keys Safe**
+
    - Store API keys and sensitive information in environment variables (`process.env`).
    - Use services like AWS Secrets Manager, HashiCorp Vault, or Azure Key Vault for managing secrets.
 
    🚫 **Never hardcode API keys or secrets in your codebase!**
 
 2. **Restrict API Key Access**
+
    - Limit API key permissions to necessary actions.
+   - Use the **Checkout API Key** for client-side integrations to ensure limited access.
    - Rotate keys periodically to reduce risk in case of leaks.
 
 3. **Use HTTPS**
+
    - Always ensure secure communication between your client, server, and the Mileston API.
 
 4. **Tokenize Sensitive Data**
@@ -117,20 +121,23 @@ const dashboardGeneratedLink = ""https://checkout.mileston.co/payment"";
 ### Backend: Create a Recurring Payment
 
 ```typescript
-import { RecurringPayment } from 'mileston-payments';
+import { RecurringPayment } from "mileston-payments";
 
 const recurringPayment = new RecurringPayment(apiKey, businessId);
 
 const recurringPayload = {
-  amount: '50.00',
-  subscriberFullName: 'John Doe',
-  subscriberEmail: 'john.doe@example.com',
-  recurringDate: new Date('2025-02-01'),
+  amount: "50.00",
+  subscriberFullName: "John Doe",
+  subscriberEmail: "john.doe@example.com",
+  recurringDate: new Date("2025-02-01"),
   recurringInterval: 30,
 };
 
-const recurringResponse = await recurringPayment.create('Acme Corp', recurringPayload);
-console.log('Recurring Payment Created:', recurringResponse);
+const recurringResponse = await recurringPayment.create(
+  "Acme Corp",
+  recurringPayload
+);
+console.log("Recurring Payment Created:", recurringResponse);
 ```
 
 ### Frontend: Notify the User
@@ -141,7 +148,9 @@ const subscriptionDetails = {
   nextPaymentDate: "2025-02-01",
 };
 
-console.log(`Hey John, your next payment of $${subscriptionDetails.amount} is due on ${subscriptionDetails.nextPaymentDate}.`);
+console.log(
+  `Hey John, your next payment of $${subscriptionDetails.amount} is due on ${subscriptionDetails.nextPaymentDate}.`
+);
 ```
 
 ---
@@ -149,12 +158,15 @@ console.log(`Hey John, your next payment of $${subscriptionDetails.amount} is du
 ## 🏆 Pro Tips for Developers
 
 1. **Test in Sandbox Mode**
+
    - Always test your integration in a sandbox environment before going live.
 
 2. **Log Responses for Debugging**
+
    - Log API responses in your backend (but avoid sensitive details!) to debug issues quickly.
 
 3. **Documentation Is Your Friend**
+
    - Refer to the [Mileston API Documentation](https://docs.mileston.co) for detailed API references and advanced use cases.
 
 4. **Think Modular**
