@@ -20,7 +20,7 @@ This will give you access to our powerful dashboard where all the magic happens.
 
 ### 🔑 Step 2: Get Your API Key
 
-Navigate to the **Developers** tab in the dashboard to generate your **API key**. You’ll find three types of keys:
+Navigate to the **Developers** tab in the dashboard to generate your **API key**. You’ll find two types of keys under the normal and checkout category:
 
 - **Test API Key** (for testnet, no real money involved):  
   `Mileston_TEST_hshshs7y373djdsdj...`
