@@ -246,6 +246,10 @@ console.log("Payment link deleted.");
 
 ---
 
+## 🌟 Real-World Example
+
+You can check how this app [https://sui-invoice.vercel.app/](https://sui-invoice.vercel.app/) uses Mileston to manage invoices for freelancers.
+
 ## 📚 API Reference
 
 ### **`PaymentLink` Class**

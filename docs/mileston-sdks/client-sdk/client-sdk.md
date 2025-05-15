@@ -8,6 +8,18 @@ Welcome to the **Mileston Payment JavaScript/TypeScript Client SDK** docs! Wheth
 
 ---
 
+## 📂 SDK Structure
+
+The Mileston Client SDK is divided into the following sections:
+
+- **Components**: React components for seamless integration.
+- **Hooks**: React hooks for real-time data fetching.
+- **Functions**: Core utility functions for payment operations.
+
+Refer to the respective documentation for detailed usage.
+
+---
+
 ## 📦 Installation
 
 Get started by installing the SDK in your project. Open your terminal and run:
@@ -165,7 +177,7 @@ export default {
 
 ---
 
-## Setup
+## Component Highlight
 
 ### Wrap Your Application with the Payment Provider
 
@@ -253,23 +265,6 @@ import { PaymentLinkCheckout } from "mileston-payment-client";
   onCardPaymentComplete={() => console.log("Card Payment Complete")}
   onCardPaymentError={(error) => console.error("Card Payment Error", error)}
 />;
-```
-
----
-
-## MilestonPaymentProvider
-
-The `MilestonPaymentProvider` is a context provider that supplies the `apikey` and `businessid` to all components within your application. The `apikey` should be the **Checkout API Key**.
-
-```javascript
-import { MilestonPaymentProvider } from "mileston-payment-client";
-
-<MilestonPaymentProvider
-  apikey="your-api-key" // Your Checkout API Key, get this in the developers tab from business.mileston.co
-  businessid="your-business-id" // Get this from the modal that pops when you click your profile
->
-  <YourComponent />
-</MilestonPaymentProvider>;
 ```
 
 ---
@@ -364,21 +359,6 @@ Always provide error callbacks for checkout components (`onWalletConnectPaymentE
 ### Integration with Backend SDK
 
 Combine the Client SDK with the Backend SDK for a complete payment solution.
-
----
-
-## 🧰 API Methods
-
-Here are the methods you can call on the `MilestonPayButton` class:
-
-- **`updateButtonText(text: string): void`**  
-  Updates the button's text.
-
-- **`updateButtonStyle(styles: Partial<CSSStyleDeclaration>): void`**  
-  Updates the button's styles.
-
-- **`destroy(): void`**  
-  Removes the button from the DOM and cleans up event listeners.
 
 ---
 

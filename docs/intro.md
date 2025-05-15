@@ -113,20 +113,6 @@ It handles everything: payment, verification, and an awesome user experience. Yo
 
 ---
 
-## 📂 GitHub Repos
-
-Check out our SDKs for more details and examples:
-
-- [**mileston-payments (Backend SDK)**](https://github.com/Mileston-co/mileston-payments)
-- [**mileston-payment-client (Frontend SDK)**](https://github.com/Mileston-co/mileston-payment-client)
-
----
-
-🎉 **Congrats!**  
-You’ve just created your first crypto payment link with Mileston Payments! High five! 🙌
-
----
-
 ## Real-World Use Cases
 
 ### Use Case 1: Subscription Management
@@ -205,6 +191,20 @@ import { PaymentLinkCheckout } from "mileston-payment-client";
   env="test"
 />;
 ```
+
+---
+
+## 📂 GitHub Repos
+
+Check out our SDKs for more details and examples:
+
+- [**mileston-payments (Backend SDK)**](https://github.com/Mileston-co/mileston-payments)
+- [**mileston-payment-client (Frontend SDK)**](https://github.com/Mileston-co/mileston-payment-client)
+
+---
+
+🎉 **Congrats!**  
+You’ve just created your first crypto payment link with Mileston Payments! High five! 🙌
 
 ---
 
