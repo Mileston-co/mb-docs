@@ -132,7 +132,6 @@ import {
     footerText="Thank you for subscribing!"
     cancelText="You can cancel your subscription at any time"
     paymentLinkId="subscription123"
-    env="test"
     onWalletConnectPaymentComplete={() =>
       console.log("Wallet subscription payment complete")
     }
@@ -159,36 +158,36 @@ import {
 
 ### Props
 
-| Prop Name                        | Type     | Description                                                                  |
-| -------------------------------- | -------- | ---------------------------------------------------------------------------- |
-| `businessName`                   | string   | Name of the business.                                                        |
-| `businessLogo`                   | string   | URL of the business logo.                                                    |
-| `plan`                           | object   | Subscription plan details.                                                   |
-| `plan.name`                      | string   | Plan name.                                                                   |
-| `plan.description`               | string   | Plan description.                                                            |
-| `plan.amount`                    | number   | Subscription amount.                                                         |
-| `plan.currency`                  | string   | Currency code (e.g., USD, EUR).                                              |
-| `plan.interval`                  | string   | Billing interval (e.g., daily, weekly, monthly, yearly).                     |
-| `plan.intervalCount`             | number   | Number of intervals between billings (e.g., 1 for monthly, 3 for quarterly). |
-| `walletConnectButtonText`        | string   | Text for the Wallet Connect button.                                          |
-| `qrCodeButtonText`               | string   | Text for the QR Code button.                                                 |
-| `cardButtonText`                 | string   | Text for the Card button.                                                    |
-| `buttonClassName`                | string   | CSS class for styling buttons.                                               |
-| `dialogTitle`                    | string   | Title for the card payment dialog.                                           |
-| `dialogDescription`              | string   | Description for the card payment dialog.                                     |
-| `className`                      | string   | CSS class for the main component.                                            |
-| `footerText`                     | string   | Footer text for the component.                                               |
-| `cancelText`                     | string   | Text for the cancel subscription message.                                    |
-| `paymentLinkId`                  | string   | ID of the payment link.                                                      |
-| `env`                            | string   | Environment (e.g., test, production).                                        |
-| `onWalletConnectPaymentComplete` | function | Callback for successful Wallet Connect payments.                             |
-| `onWalletConnectPaymentError`    | function | Callback for Wallet Connect payment errors.                                  |
-| `onQrCodePaymentComplete`        | function | Callback for successful QR Code payments.                                    |
-| `onQrCodePaymentError`           | function | Callback for QR Code payment errors.                                         |
-| `onCardPaymentComplete`          | function | Callback for successful Card payments.                                       |
-| `onCardPaymentError`             | function | Callback for Card payment errors.                                            |
-| `amount`                         | number   | Subscription amount.                                                         |
-| `recipientWalletAddress`         | string   | Wallet address of the recipient.                                             |
+| Prop Name                 | Type   | Description                                                                  |
+| ------------------------- | ------ | ---------------------------------------------------------------------------- |
+| `businessName`            | string | Name of the business.                                                        |
+| `businessLogo`            | string | URL of the business logo.                                                    |
+| `plan`                    | object | Subscription plan details.                                                   |
+| `plan.name`               | string | Plan name.                                                                   |
+| `plan.description`        | string | Plan description.                                                            |
+| `plan.amount`             | number | Subscription amount.                                                         |
+| `plan.currency`           | string | Currency code (e.g., USD, EUR).                                              |
+| `plan.interval`           | string | Billing interval (e.g., daily, weekly, monthly, yearly).                     |
+| `plan.intervalCount`      | number | Number of intervals between billings (e.g., 1 for monthly, 3 for quarterly). |
+| `walletConnectButtonText` | string | Text for the Wallet Connect button.                                          |
+| `qrCodeButtonText`        | string | Text for the QR Code button.                                                 |
+| `cardButtonText`          | string | Text for the Card button.                                                    |
+| `buttonClassName`         | string | CSS class for styling buttons.                                               |
+| `dialogTitle`             | string | Title for the card payment dialog.                                           |
+| `dialogDescription`       | string | Description for the card payment dialog.                                     |
+| `className`               | string | CSS class for the main component.                                            |
+| `footerText`              | string | Footer text for the component.                                               |
+| `cancelText`              | string | Text for the cancel subscription message.                                    |
+| `paymentLinkId`           | string | ID of the payment link.                                                      |
+
+| `onWalletConnectPaymentComplete` | function | Callback for successful Wallet Connect payments. |
+| `onWalletConnectPaymentError` | function | Callback for Wallet Connect payment errors. |
+| `onQrCodePaymentComplete` | function | Callback for successful QR Code payments. |
+| `onQrCodePaymentError` | function | Callback for QR Code payment errors. |
+| `onCardPaymentComplete` | function | Callback for successful Card payments. |
+| `onCardPaymentError` | function | Callback for Card payment errors. |
+| `amount` | number | Subscription amount. |
+| `recipientWalletAddress` | string | Wallet address of the recipient. |
 
 ### Notes
 
@@ -226,7 +225,6 @@ import {
     className="custom-class"
     footerText="Thank you for your business!"
     paymentLinkId="invoice123"
-    env="test"
     onWalletConnectPaymentComplete={() =>
       console.log("Wallet payment complete")
     }
@@ -247,30 +245,30 @@ import {
 
 ### Props
 
-| Prop Name                        | Type     | Description                                      |
-| -------------------------------- | -------- | ------------------------------------------------ |
-| `businessName`                   | string   | Name of the business.                            |
-| `businessLogo`                   | string   | URL of the business logo.                        |
-| `currency`                       | string   | Currency code (e.g., USD).                       |
-| `description`                    | string   | Invoice description.                             |
-| `walletConnectButtonText`        | string   | Text for the Wallet Connect button.              |
-| `qrCodeButtonText`               | string   | Text for the QR Code button.                     |
-| `cardButtonText`                 | string   | Text for the Card button.                        |
-| `buttonClassName`                | string   | CSS class for styling buttons.                   |
-| `dialogTitle`                    | string   | Title for the card payment dialog.               |
-| `dialogDescription`              | string   | Description for the card payment dialog.         |
-| `className`                      | string   | CSS class for the main component.                |
-| `footerText`                     | string   | Footer text for the component.                   |
-| `paymentLinkId`                  | string   | ID of the payment link.                          |
-| `env`                            | string   | Environment (e.g., test, production).            |
+| Prop Name                 | Type   | Description                              |
+| ------------------------- | ------ | ---------------------------------------- |
+| `businessName`            | string | Name of the business.                    |
+| `businessLogo`            | string | URL of the business logo.                |
+| `currency`                | string | Currency code (e.g., USD).               |
+| `description`             | string | Invoice description.                     |
+| `walletConnectButtonText` | string | Text for the Wallet Connect button.      |
+| `qrCodeButtonText`        | string | Text for the QR Code button.             |
+| `cardButtonText`          | string | Text for the Card button.                |
+| `buttonClassName`         | string | CSS class for styling buttons.           |
+| `dialogTitle`             | string | Title for the card payment dialog.       |
+| `dialogDescription`       | string | Description for the card payment dialog. |
+| `className`               | string | CSS class for the main component.        |
+| `footerText`              | string | Footer text for the component.           |
+| `paymentLinkId`           | string | ID of the payment link.                  |
+
 | `onWalletConnectPaymentComplete` | function | Callback for successful Wallet Connect payments. |
-| `onWalletConnectPaymentError`    | function | Callback for Wallet Connect payment errors.      |
-| `onQrCodePaymentComplete`        | function | Callback for successful QR Code payments.        |
-| `onQrCodePaymentError`           | function | Callback for QR Code payment errors.             |
-| `onCardPaymentComplete`          | function | Callback for successful Card payments.           |
-| `onCardPaymentError`             | function | Callback for Card payment errors.                |
-| `amount`                         | number   | Invoice amount.                                  |
-| `recipientWalletAddress`         | string   | Wallet address of the recipient.                 |
+| `onWalletConnectPaymentError` | function | Callback for Wallet Connect payment errors. |
+| `onQrCodePaymentComplete` | function | Callback for successful QR Code payments. |
+| `onQrCodePaymentError` | function | Callback for QR Code payment errors. |
+| `onCardPaymentComplete` | function | Callback for successful Card payments. |
+| `onCardPaymentError` | function | Callback for Card payment errors. |
+| `amount` | number | Invoice amount. |
+| `recipientWalletAddress` | string | Wallet address of the recipient. |
 
 ### Notes
 
@@ -309,7 +307,6 @@ import {
     className="custom-class"
     footerText="Thank you for your payment!"
     paymentLinkId="payment123"
-    env="test"
     onWalletConnectPaymentComplete={() =>
       console.log("Wallet payment complete")
     }
@@ -330,32 +327,32 @@ import {
 
 ### Props
 
-| Prop Name                        | Type     | Description                                      |
-| -------------------------------- | -------- | ------------------------------------------------ |
-| `businessName`                   | string   | Name of the business.                            |
-| `businessLogo`                   | string   | URL of the business logo.                        |
-| `bannerImage`                    | string   | URL of the banner image for the payment page.    |
-| `title`                          | string   | Title of the payment request.                    |
-| `currency`                       | string   | Currency code (e.g., USD).                       |
-| `description`                    | string   | Description of the payment request.              |
-| `walletConnectButtonText`        | string   | Text for the Wallet Connect button.              |
-| `qrCodeButtonText`               | string   | Text for the QR Code button.                     |
-| `cardButtonText`                 | string   | Text for the Card button.                        |
-| `buttonClassName`                | string   | CSS class for styling buttons.                   |
-| `dialogTitle`                    | string   | Title for the card payment dialog.               |
-| `dialogDescription`              | string   | Description for the card payment dialog.         |
-| `className`                      | string   | CSS class for the main component.                |
-| `footerText`                     | string   | Footer text for the component.                   |
-| `paymentLinkId`                  | string   | ID of the payment link.                          |
-| `env`                            | string   | Environment (e.g., test, production).            |
+| Prop Name                 | Type   | Description                                   |
+| ------------------------- | ------ | --------------------------------------------- |
+| `businessName`            | string | Name of the business.                         |
+| `businessLogo`            | string | URL of the business logo.                     |
+| `bannerImage`             | string | URL of the banner image for the payment page. |
+| `title`                   | string | Title of the payment request.                 |
+| `currency`                | string | Currency code (e.g., USD).                    |
+| `description`             | string | Description of the payment request.           |
+| `walletConnectButtonText` | string | Text for the Wallet Connect button.           |
+| `qrCodeButtonText`        | string | Text for the QR Code button.                  |
+| `cardButtonText`          | string | Text for the Card button.                     |
+| `buttonClassName`         | string | CSS class for styling buttons.                |
+| `dialogTitle`             | string | Title for the card payment dialog.            |
+| `dialogDescription`       | string | Description for the card payment dialog.      |
+| `className`               | string | CSS class for the main component.             |
+| `footerText`              | string | Footer text for the component.                |
+| `paymentLinkId`           | string | ID of the payment link.                       |
+
 | `onWalletConnectPaymentComplete` | function | Callback for successful Wallet Connect payments. |
-| `onWalletConnectPaymentError`    | function | Callback for Wallet Connect payment errors.      |
-| `onQrCodePaymentComplete`        | function | Callback for successful QR Code payments.        |
-| `onQrCodePaymentError`           | function | Callback for QR Code payment errors.             |
-| `onCardPaymentComplete`          | function | Callback for successful Card payments.           |
-| `onCardPaymentError`             | function | Callback for Card payment errors.                |
-| `amount`                         | number   | Payment amount.                                  |
-| `recipientWalletAddress`         | string   | Wallet address of the recipient.                 |
+| `onWalletConnectPaymentError` | function | Callback for Wallet Connect payment errors. |
+| `onQrCodePaymentComplete` | function | Callback for successful QR Code payments. |
+| `onQrCodePaymentError` | function | Callback for QR Code payment errors. |
+| `onCardPaymentComplete` | function | Callback for successful Card payments. |
+| `onCardPaymentError` | function | Callback for Card payment errors. |
+| `amount` | number | Payment amount. |
+| `recipientWalletAddress` | string | Wallet address of the recipient. |
 
 ### Notes
 
@@ -402,7 +399,6 @@ function App() {
         console.error("Card payment error:", error)
       }
       amount={100}
-      env="test"
       recipientWalletAddress="0x123456789abcdef"
       paymentType="invoice"
       paymentLinkId="payment123"
@@ -413,27 +409,27 @@ function App() {
 
 ### Props
 
-| Prop Name                        | Type     | Description                                                     |
-| -------------------------------- | -------- | --------------------------------------------------------------- |
-| `walletConnectButtonText`        | string   | Text for the Wallet Connect button.                             |
-| `qrCodeButtonText`               | string   | Text for the QR Code button.                                    |
-| `cardButtonText`                 | string   | Text for the Card button.                                       |
-| `buttonClassName`                | string   | CSS class for styling buttons.                                  |
-| `dialogTitle`                    | string   | Title for the card payment dialog.                              |
-| `dialogDescription`              | string   | Description for the card payment dialog.                        |
-| `defaultTab`                     | string   | The default selected tab (e.g., "wallet", "qrcode", "card").    |
-| `onTabChange`                    | function | Callback triggered when the selected tab changes.               |
-| `onWalletConnectPaymentComplete` | function | Callback for successful Wallet Connect payments.                |
-| `onWalletConnectPaymentError`    | function | Callback for Wallet Connect payment errors.                     |
-| `onQrCodePaymentComplete`        | function | Callback for successful QR Code payments.                       |
-| `onQrCodePaymentError`           | function | Callback for QR Code payment errors.                            |
-| `onCardPaymentComplete`          | function | Callback for successful Card payments.                          |
-| `onCardPaymentError`             | function | Callback for Card payment errors.                               |
-| `amount`                         | number   | Payment amount.                                                 |
-| `env`                            | string   | Environment (e.g., test, production).                           |
-| `recipientWalletAddress`         | string   | Wallet address of the recipient.                                |
-| `paymentType`                    | string   | Type of payment (e.g., "invoice", "payment-link", "recurring"). |
-| `paymentLinkId`                  | string   | ID of the payment link.                                         |
+| Prop Name                        | Type     | Description                                                  |
+| -------------------------------- | -------- | ------------------------------------------------------------ |
+| `walletConnectButtonText`        | string   | Text for the Wallet Connect button.                          |
+| `qrCodeButtonText`               | string   | Text for the QR Code button.                                 |
+| `cardButtonText`                 | string   | Text for the Card button.                                    |
+| `buttonClassName`                | string   | CSS class for styling buttons.                               |
+| `dialogTitle`                    | string   | Title for the card payment dialog.                           |
+| `dialogDescription`              | string   | Description for the card payment dialog.                     |
+| `defaultTab`                     | string   | The default selected tab (e.g., "wallet", "qrcode", "card"). |
+| `onTabChange`                    | function | Callback triggered when the selected tab changes.            |
+| `onWalletConnectPaymentComplete` | function | Callback for successful Wallet Connect payments.             |
+| `onWalletConnectPaymentError`    | function | Callback for Wallet Connect payment errors.                  |
+| `onQrCodePaymentComplete`        | function | Callback for successful QR Code payments.                    |
+| `onQrCodePaymentError`           | function | Callback for QR Code payment errors.                         |
+| `onCardPaymentComplete`          | function | Callback for successful Card payments.                       |
+| `onCardPaymentError`             | function | Callback for Card payment errors.                            |
+| `amount`                         | number   | Payment amount.                                              |
+
+| `recipientWalletAddress` | string | Wallet address of the recipient. |
+| `paymentType` | string | Type of payment (e.g., "invoice", "payment-link", "recurring"). |
+| `paymentLinkId` | string | ID of the payment link. |
 
 ### Notes
 

@@ -135,12 +135,18 @@ import { SubscriptionCheckout } from "mileston-payment-client";
     interval: "monthly",
     intervalCount: 1,
   }}
+  walletConnectButtonText="Subscribe with Wallet"
+  qrCodeButtonText="Generate Subscription QR"
+  cardButtonText="Subscribe with Card"
+  dialogTitle="Subscription Payment"
+  dialogDescription="Complete your subscription payment securely"
+  className="custom-class"
+  footerText="Thank you for subscribing!"
+  paymentLinkId="subscription-link-id"
   onWalletConnectPaymentComplete={(networkId, tokenId) =>
     console.log("Payment Complete", networkId, tokenId)
   }
   onWalletConnectPaymentError={(error) => console.error("Payment Error", error)}
-  paymentLinkId="subscription-link-id"
-  env="test"
 />;
 ```
 
@@ -159,12 +165,18 @@ import { InvoiceCheckout } from "mileston-payment-client";
   description="Invoice #4567 for Web Design Project"
   amount={500}
   recipientWalletAddress="0x123456789abcdef"
+  walletConnectButtonText="Pay with Wallet"
+  qrCodeButtonText="Generate Payment QR"
+  cardButtonText="Pay with Card"
+  dialogTitle="Invoice Payment"
+  dialogDescription="Complete your invoice payment securely"
+  className="custom-class"
+  footerText="Thank you for your business!"
+  paymentLinkId="invoice-id"
   onQrCodePaymentComplete={() => console.log("QR Code Payment Complete")}
   onQrCodePaymentError={(error) =>
     console.error("QR Code Payment Error", error)
   }
-  paymentLinkId="invoice-id"
-  env="test"
 />;
 ```
 
@@ -185,10 +197,16 @@ import { PaymentLinkCheckout } from "mileston-payment-client";
   description="Pay for your order"
   amount={150}
   recipientWalletAddress="0x123456789abcdef"
+  walletConnectButtonText="Connect Wallet & Pay"
+  qrCodeButtonText="Generate Payment QR"
+  cardButtonText="Pay with Card"
+  dialogTitle="Order Payment"
+  dialogDescription="Complete your order payment securely"
+  className="custom-class"
+  footerText="Thank you for your order!"
+  paymentLinkId="order-payment-link"
   onCardPaymentComplete={() => console.log("Card Payment Complete")}
   onCardPaymentError={(error) => console.error("Card Payment Error", error)}
-  paymentLinkId="order-payment-link"
-  env="test"
 />;
 ```
 
