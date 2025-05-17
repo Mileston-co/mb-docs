@@ -98,24 +98,6 @@ function App() {
 
 ---
 
-### Verification of Implementation
-
-The `PayButton` component implementation matches the documentation:
-
-1. **Props**:
-   - All props (`onPaymentComplete`, `onPaymentError`, `paymentUrl`, `paymentId`, `paymentType`, `theme`, `style`, `className`, `children`) are correctly documented and implemented.
-2. **Functionality**:
-   - The `handlePayWithMileston` function opens a popup for payment processing.
-   - Handles payment completion and errors via `onPaymentComplete` and `onPaymentError` callbacks.
-   - Dynamically constructs the payment URL based on `paymentUrl`, `paymentType`, and `paymentId`.
-3. **UI Behavior**:
-   - Displays a loading spinner while the payment is processing.
-   - Disables the button when the payment is in progress or complete.
-
-The documentation and implementation are consistent and thorough. Let me know if further adjustments are needed!
-
----
-
 ## SubscriptionCheckout
 
 A React component for subscription-based payments. This component simplifies the process of setting up recurring payments.
