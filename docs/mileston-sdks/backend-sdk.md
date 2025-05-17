@@ -4,13 +4,14 @@ sidebar_position: 2
 
 # Backend SDK Documentation
 
-Welcome to the **Mileston Payments JavaScript/Typescript Backend SDK**—your ultimate tool to manage payment links, invoices, and recurring payments like a boss! 😎 Whether you’re building a simple checkout system or a full-blown payment management solution, we’ve got your back with a developer-friendly, secure, and lightweight SDK.
+Welcome to the **Mileston Payments JavaScript/TypeScript Backend SDK**—your ultimate tool to manage payment links, payouts, invoices, and recurring payments! Whether you’re building a simple checkout system or a full-blown payment management solution, we’ve got your back with a developer-friendly, secure, and lightweight SDK.
 
 ---
 
 ## 🚀 Features
 
 - **Create and Manage Payment Links:** Let your customers pay with ease!
+- **Send Payouts:** Transfer funds directly to recipients' wallets.
 - **Generate and Update Invoices:** From client billing to reminders, stay on top of your payments.
 - **Handle Recurring Payments:** Automate those monthly, weekly, or even daily payments like a pro.
 - **Secure and Reliable:** Sleep soundly knowing your payments are safe.
@@ -32,13 +33,19 @@ npm install mileston-payments
 
 Import the SDK and initialize it with your **API Key** and **Business ID**.
 
-```javascript
-import { PaymentLink, Invoice, RecurringPayment } from "mileston-payments";
+```typescript
+import {
+  PaymentLink,
+  PayoutAPI,
+  Invoice,
+  RecurringPayment,
+} from "mileston-payments";
 
 const apiKey = "your-api-key"; // Get this from your dashboard
 const businessId = "your-business-id"; // Get this from the modal that pops when you click your profile
 
 const paymentLink = new PaymentLink(apiKey, businessId);
+const payout = new PayoutAPI(apiKey, businessId);
 const invoice = new Invoice(apiKey, businessId);
 const recurringPayment = new RecurringPayment(apiKey, businessId);
 ```
@@ -67,7 +74,39 @@ Imagine sending that link via email or embedding it in your website. So smooth, 
 
 ---
 
-### 📜 2. **Generating an Invoice**
+### 💸 2. **Sending a Payout**
+
+Send payments directly to recipients.
+
+```typescript
+const sendPayoutPayload = {
+  amount: "100.00",
+  recipientAddress: "0xRecipientWalletAddress",
+  walletType: "eth", // Supported wallet types: "sui", "eth", "avax", "pol", "base", "arb"
+  secretPhrase: "optional-secret-phrase", // Optional: Use for wallets with copied secrets
+};
+
+const payoutResponse = await payout.sendPayment(sendPayoutPayload);
+console.log("Payout Response:", payoutResponse);
+// Output: { statusCode: 200, message: "Payout successful" }
+```
+
+#### Supported Wallet Types for Payouts
+
+- **`sui`**: Sui blockchain wallet.
+- **`eth`**: Ethereum wallet.
+- **`avax`**: Avalanche wallet.
+- **`pol`**: Polygon wallet.
+- **`base`**: Base blockchain wallet.
+- **`arb`**: Arbitrum wallet.
+
+#### Optional Field: `secretPhrase`
+
+- **`secretPhrase`**: Use this field if the recipient's wallet requires a secret phrase for transactions. This is optional and only needed for wallets with copied secrets.
+
+---
+
+### 📜 3. **Generating an Invoice**
 
 Because looking professional matters!
 
@@ -94,7 +133,7 @@ Invoices have never been this elegant! Your users automatically get emails immed
 
 ---
 
-### 🔄 3. **Handling Recurring Payments**
+### 🔄 4. **Handling Recurring Payments**
 
 Set it and forget it! Automate subscription payments effortlessly.
 
@@ -120,7 +159,7 @@ Your users automatically receive an email to pay up and a follow up email when t
 
 ---
 
-### 🛠️ 4. **Updating a Payment Link**
+### 🛠️ 5. **Updating a Payment Link**
 
 Did the customer change their mind? No problem—update the payment link on the fly.
 
@@ -142,7 +181,7 @@ You’re in full control—no more “Oops!” moments.
 
 ---
 
-### 🛠️ 5. **Updating an Invoice**
+### 🛠️ 6. **Updating an Invoice**
 
 Need to make changes to an invoice? No problem—update it easily.
 
@@ -160,7 +199,7 @@ console.log("Updated Invoice:", updatedInvoice);
 
 ---
 
-### 🛠️ 6. **Fetching an Invoice**
+### 🛠️ 7. **Fetching an Invoice**
 
 Retrieve details of a specific invoice.
 
@@ -172,7 +211,7 @@ console.log("Invoice Data:", invoiceData);
 
 ---
 
-### 🛠️ 7. **Deleting an Invoice**
+### 🛠️ 8. **Deleting an Invoice**
 
 Remove an invoice when it's no longer needed.
 
@@ -183,7 +222,7 @@ console.log("Invoice deleted.");
 
 ---
 
-### 🛠️ 8. **Updating a Recurring Payment**
+### 🛠️ 9. **Updating a Recurring Payment**
 
 Modify the details of an existing recurring payment.
 
@@ -203,7 +242,7 @@ console.log("Updated Recurring Payment:", updatedRecurringPayment);
 
 ---
 
-### 🛠️ 9. **Fetching a Recurring Payment**
+### 🛠️ 10. **Fetching a Recurring Payment**
 
 Retrieve details of a specific recurring payment.
 
@@ -215,7 +254,7 @@ console.log("Recurring Payment Data:", recurringPaymentData);
 
 ---
 
-### 🛠️ 10. **Deleting a Recurring Payment**
+### 🛠️ 11. **Deleting a Recurring Payment**
 
 Cancel a recurring payment when it's no longer needed.
 
@@ -262,6 +301,11 @@ You can check how this app [https://sui-invoice.vercel.app/](https://sui-invoice
   Retrieve details of a specific payment link.
 - **`delete(id: string): Promise<DeletePaymentLinkResponse>`**  
   Delete a payment link.
+
+### **`PayoutAPI` Class**
+
+- **`sendPayment(payload: SendPayoutRequest): Promise<SendPayoutResponse>`**  
+  Send a payout to a recipient.
 
 ### **`Invoice` Class**
 

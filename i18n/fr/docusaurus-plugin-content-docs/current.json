@@ -1,0 +1,30 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.API Keys": {
+    "message": "API Keys",
+    "description": "The label for category API Keys in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.API Keys.link.generated-index.description": {
+    "message": "Learn more about test and live API keys.",
+    "description": "The generated-index page description for category API Keys in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Mileston SDKs": {
+    "message": "Mileston SDKs",
+    "description": "The label for category Mileston SDKs in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Mileston SDKs.link.generated-index.description": {
+    "message": "Learn more about Mileston SDKs.",
+    "description": "The generated-index page description for category Mileston SDKs in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.🛠️ Mileston Payment Client SDK": {
+    "message": "🛠️ Mileston Payment Client SDK",
+    "description": "The label for category 🛠️ Mileston Payment Client SDK in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.webooks": {
+    "message": "webooks",
+    "description": "The label for category webooks in sidebar tutorialSidebar"
+  }
+}

@@ -22,18 +22,21 @@ console.log(paymentDetails);
 
 ### Parameters
 
-- `options` (object): The options for fetching payment details.
-  - `apikey` (string): Your API key. This is required for authentication.
-  - `businessid` (string): Your business ID. This identifies your business in the system.
-  - `paymentId` (string): The ID of the payment to fetch. This is unique for each payment.
-  - `paymentType` (string): The type of payment. Supported values are:
-    - `"invoice"`: For invoice payments.
-    - `"payment-link"`: For payment link-based payments.
-    - `"recurring"`: For recurring payments.
+| Parameter Name | Type   | Description                                                      |
+| -------------- | ------ | ---------------------------------------------------------------- |
+| `apikey`       | string | Your API key. This is required for authentication.               |
+| `businessid`   | string | Your business ID. This identifies your business in the system.   |
+| `paymentId`    | string | The ID of the payment to fetch. This is unique for each payment. |
+| `paymentType`  | string | The type of payment. Supported values are:                       |
+|                |        | - `"invoice"`: For invoice payments.                             |
+|                |        | - `"payment-link"`: For payment link-based payments.             |
+|                |        | - `"recurring"`: For recurring payments.                         |
 
 ### Returns
 
-- A promise that resolves to the payment details. The structure of the response depends on the `paymentType`.
+| Return Type       | Description                                                                                                 |
+| ----------------- | ----------------------------------------------------------------------------------------------------------- |
+| `Promise<object>` | A promise that resolves to the payment details. The structure of the response depends on the `paymentType`. |
 
 ### Notes
 
@@ -57,12 +60,16 @@ console.log(userDetails);
 
 ### Parameters
 
-- `apikey` (string): Your API key. This is required for authentication.
-- `businessId` (string): The business ID to include in the headers. This is mandatory.
+| Parameter Name | Type   | Description                                                   |
+| -------------- | ------ | ------------------------------------------------------------- |
+| `apikey`       | string | Your API key. This is required for authentication.            |
+| `businessId`   | string | The business ID to include in the headers. This is mandatory. |
 
 ### Returns
 
-- A promise that resolves to the user details. The response includes user-specific information such as name, email, and roles.
+| Return Type       | Description                                                                                                                  |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `Promise<object>` | A promise that resolves to the user details. The response includes user-specific information such as name, email, and roles. |
 
 ### Notes
 
@@ -90,9 +97,11 @@ const payButton = new MilestonPayButton(container, {
 
 ### Methods
 
-- `updateButtonText(text: string): void`: Updates the button's text. Use this to dynamically change the button label.
-- `updateButtonStyle(styles: Partial<CSSStyleDeclaration>): void`: Updates the button's styles. This allows for custom styling.
-- `destroy(): void`: Removes the button from the DOM and cleans up event listeners.
+| Method Name         | Parameters                             | Return Type | Description                                                                 |
+| ------------------- | -------------------------------------- | ----------- | --------------------------------------------------------------------------- |
+| `updateButtonText`  | `text: string`                         | `void`      | Updates the button's text. Use this to dynamically change the button label. |
+| `updateButtonStyle` | `styles: Partial<CSSStyleDeclaration>` | `void`      | Updates the button's styles. This allows for custom styling.                |
+| `destroy`           | None                                   | `void`      | Removes the button from the DOM and cleans up event listeners.              |
 
 ### Notes
 
@@ -114,7 +123,7 @@ const data = await getOnRampData(
   {
     amount: "100",
     recipientWalletAddress: "0xRecipientAddress",
-    chain: "eth",
+    chain: "eth", //or "avax", "base", "pol", "arb"
   },
   "your-api-key",
   "your-business-id"
@@ -124,16 +133,19 @@ console.log(data);
 
 ### Parameters
 
-- `params` (object): The parameters for fetching onramp data.
-  - `amount` (string): The amount for the onramp.
-  - `recipientWalletAddress` (string): The recipient's wallet address.
-  - `chain` (string): The blockchain network (e.g., "eth").
-- `apikey` (string): Your API key.
-- `businessid` (string): Your business ID.
+| Parameter Name           | Type   | Description                           |
+| ------------------------ | ------ | ------------------------------------- |
+| `amount`                 | string | The amount for the onramp.            |
+| `recipientWalletAddress` | string | The recipient's wallet address.       |
+| `chain`                  | string | The blockchain network (e.g., "eth"). |
+| `apikey`                 | string | Your API key.                         |
+| `businessid`             | string | Your business ID.                     |
 
 ### Returns
 
-- A promise that resolves to the onramp data. The response includes details such as payment links and transaction metadata.
+| Return Type       | Description                                                                                                               |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `Promise<object>` | A promise that resolves to the onramp data. The response includes details such as payment links and transaction metadata. |
 
 ### Notes
 
@@ -154,21 +166,24 @@ import { getPaymentWallet } from "mileston-payment-client";
 const walletData = await getPaymentWallet({
   apikey: "your-api-key",
   businessid: "your-business-id",
-  walletType: "", //wallet type
+  walletType: "sui", //or "evm"
 });
 console.log(walletData);
 ```
 
 ### Parameters
 
-- `params` (object): The parameters for fetching wallet data.
-  - `apikey` (string): Your API key.
-  - `businessid` (string): Your business ID.
-  - `walletType` (string): The type of wallet.
+| Parameter Name | Type   | Description         |
+| -------------- | ------ | ------------------- |
+| `apikey`       | string | Your API key.       |
+| `businessid`   | string | Your business ID.   |
+| `walletType`   | string | The type of wallet. |
 
 ### Returns
 
-- A promise that resolves to the wallet data. The response includes wallet-specific details such as balance and transaction history.
+| Return Type       | Description                                                                                                                        |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `Promise<object>` | A promise that resolves to the wallet data. The response includes wallet-specific details such as balance and transaction history. |
 
 ### Notes
 
@@ -200,18 +215,80 @@ console.log(response);
 
 ### Parameters
 
-- `options` (object): The options for saving payment details.
-  - `apikey` (string): Your API key.
-  - `businessid` (string): Your business ID.
-  - `type` (string): The type of payment (e.g., "invoice", "payment-link", "recurring").
-  - `body` (object): The payment details.
-  - `nativeTokens` (string, optional): Native tokens for the payment.
+| Parameter Name | Type   | Description                                                         |
+| -------------- | ------ | ------------------------------------------------------------------- |
+| `apikey`       | string | Your API key.                                                       |
+| `businessid`   | string | Your business ID.                                                   |
+| `type`         | string | The type of payment (e.g., "invoice", "payment-link", "recurring"). |
+| `body`         | object | The payment details.                                                |
+| `nativeTokens` | string | Native tokens for the payment (optional).                           |
 
 ### Returns
 
-- A promise that resolves to the server response. The response includes a confirmation of the saved payment.
+| Return Type       | Description                                                                                                |
+| ----------------- | ---------------------------------------------------------------------------------------------------------- |
+| `Promise<object>` | A promise that resolves to the server response. The response includes a confirmation of the saved payment. |
 
 ### Notes
 
 - Ensure the `body` object contains all required fields for the payment type.
 - This function is critical for storing payment data securely.
+
+---
+
+## handlePayWithEVMWalletConnect
+
+Handles payment transactions using EVM-compatible wallets via WalletConnect. This function supports both native tokens (e.g., AVAX, POL, ETH) and ERC-20 tokens (e.g., USDC, USDT).
+
+### Usage
+
+```typescript
+import { handlePayWithEVMWalletConnect } from "mileston-payment-client";
+
+const result = await handlePayWithEVMWalletConnect({
+  env: "prod",
+  evm: "eth",
+  recipientAddress: "0xRecipientAddress",
+  amount: "100",
+  token: "USDC",
+});
+console.log(result.txHash, result.payerAddress);
+```
+
+### Parameters
+
+| Parameter Name     | Type   | Description                                           |
+| ------------------ | ------ | ----------------------------------------------------- |
+| `env`              | string | The environment (e.g., "test", "prod").               |
+| `evm`              | string | The EVM chain identifier (e.g., "eth", "pol").        |
+| `recipientAddress` | string | The recipient's wallet address.                       |
+| `amount`           | string | The amount to send (in token units, not Wei).         |
+| `token`            | string | The token type (e.g., "AVAX", "ETH", "USDC", "USDT"). |
+
+### Returns
+
+| Return Type       | Description                                                                                              |
+| ----------------- | -------------------------------------------------------------------------------------------------------- |
+| `Promise<object>` | A promise that resolves with the transaction details, including `txHash`, `feeHash`, and `payerAddress`. |
+
+### Notes
+
+- For native tokens, two transactions are sent: one to the recipient and one for the fee.
+- For ERC-20 tokens, two token transfer transactions are encoded and sent.
+- The fee is calculated as 0.04% of the total amount.
+- The function uses the `viem` library for interacting with the blockchain.
+
+### Example
+
+```typescript
+const result = await handlePayWithEVMWalletConnect({
+  env: "prod",
+  evm: "eth",
+  recipientAddress: "0xRecipientAddress",
+  amount: "100",
+  token: "USDC",
+});
+console.log(result.txHash, result.payerAddress);
+```
+
+---
