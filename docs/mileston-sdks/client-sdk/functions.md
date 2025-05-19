@@ -271,13 +271,6 @@ console.log(result.txHash, result.payerAddress);
 | ----------------- | -------------------------------------------------------------------------------------------------------- |
 | `Promise<object>` | A promise that resolves with the transaction details, including `txHash`, `feeHash`, and `payerAddress`. |
 
-### Notes
-
-- For native tokens, two transactions are sent: one to the recipient and one for the fee.
-- For ERC-20 tokens, two token transfer transactions are encoded and sent.
-- The fee is calculated as 0.04% of the total amount.
-- The function uses the `viem` library for interacting with the blockchain.
-
 ### Example
 
 ```typescript

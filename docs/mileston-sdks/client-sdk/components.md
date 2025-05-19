@@ -468,8 +468,6 @@ function App() {
 
 ### Notes
 
-- This provider automatically connects to the Sui wallet using the `WalletProvider` from `@mysten/dapp-kit`.
-- It uses `@tanstack/react-query` for managing queries and caching.
 - The default network is set to `testnet`, but it also supports `mainnet`.
 
 ### Features
@@ -477,5 +475,205 @@ function App() {
 - **Network Configuration**: Configures Sui networks (`testnet` and `mainnet`) using `createNetworkConfig`.
 - **Auto Connection**: Automatically connects to the wallet when the provider is initialized.
 - **Query Management**: Uses `QueryClientProvider` for managing queries and caching.
+
+---
+
+## WalletConnectPayment
+
+A React component for handling payments via WalletConnect. It supports multiple blockchain networks and tokens.
+
+### Usage
+
+```typescript
+import { WalletConnectPayment } from "mileston-payment-client";
+
+function App() {
+  return (
+    <WalletConnectPayment
+      onPaymentComplete={(networkId, tokenId) =>
+        console.log("Payment complete:", networkId, tokenId)
+      }
+      onPaymentError={(error) => console.error("Payment error:", error)}
+      buttonText="Connect Wallet & Pay"
+      buttonClassName="custom-class"
+      recipientWalletAddress={{
+        eth: "0x123456789abcdef",
+        sui: "sui-address",
+        solana: "solana-address",
+      }}
+      amount={100}
+      paymentLinkId="payment123"
+      env="test"
+      paymentType="invoice"
+      userUUID="user-uuid"
+    />
+  );
+}
+```
+
+### Props
+
+| Prop Name                | Type     | Description                                 |
+| ------------------------ | -------- | ------------------------------------------- |
+| `onPaymentComplete`      | function | Callback for successful payments.           |
+| `onPaymentError`         | function | Callback for payment errors.                |
+| `buttonText`             | string   | Text for the payment button.                |
+| `buttonClassName`        | string   | CSS class for styling the button.           |
+| `recipientWalletAddress` | object   | Wallet addresses for different blockchains. |
+| `amount`                 | number   | Payment amount.                             |
+| `paymentLinkId`          | string   | ID of the payment link.                     |
+| `env`                    | string   | Environment (e.g., test, production).       |
+| `paymentType`            | string   | Type of payment (e.g., invoice, recurring). |
+| `userUUID`               | string   | User UUID for tracking payments.            |
+
+### Notes
+
+- Supports multiple blockchain networks like Ethereum, Sui, and Solana.
+- Automatically handles wallet connections and payment processing.
+
+---
+
+## QrCodePayment
+
+A React component for generating and verifying QR code-based payments.
+
+### Usage
+
+```typescript
+import { QrCodePayment } from "mileston-payment-client";
+
+function App() {
+  return (
+    <QrCodePayment
+      onPaymentComplete={(networkId, tokenId) =>
+        console.log("Payment complete:", networkId, tokenId)
+      }
+      onPaymentError={(error) => console.error("Payment error:", error)}
+      buttonText="Generate Payment QR"
+      buttonClassName="custom-class"
+      recipientWalletAddress={{
+        eth: "0x123456789abcdef",
+        sui: "sui-address",
+        solana: "solana-address",
+      }}
+      amount={100}
+      paymentLinkId="payment123"
+      env="test"
+      paymentType="invoice"
+      userUUID="user-uuid"
+    />
+  );
+}
+```
+
+### Props
+
+| Prop Name                | Type     | Description                                 |
+| ------------------------ | -------- | ------------------------------------------- |
+| `onPaymentComplete`      | function | Callback for successful payments.           |
+| `onPaymentError`         | function | Callback for payment errors.                |
+| `buttonText`             | string   | Text for the QR code generation button.     |
+| `buttonClassName`        | string   | CSS class for styling the button.           |
+| `recipientWalletAddress` | object   | Wallet addresses for different blockchains. |
+| `amount`                 | number   | Payment amount.                             |
+| `paymentLinkId`          | string   | ID of the payment link.                     |
+| `env`                    | string   | Environment (e.g., test, production).       |
+| `paymentType`            | string   | Type of payment (e.g., invoice, recurring). |
+| `userUUID`               | string   | User UUID for tracking payments.            |
+
+### Notes
+
+- Generates a QR code for payment and verifies the transaction via polling.
+- Supports multiple blockchain networks and tokens.
+
+---
+
+## CardPayment
+
+A React component for handling card-based payments. It integrates with onramp services to process payments.
+
+### Usage
+
+```typescript
+import { CardPayment } from "mileston-payment-client";
+
+function App() {
+  return (
+    <CardPayment
+      onPaymentComplete={() => console.log("Payment complete")}
+      onPaymentError={(error) => console.error("Payment error:", error)}
+      buttonText="Pay with Card"
+      buttonClassName="custom-class"
+      recipientWalletAddress={{
+        eth: "0x123456789abcdef",
+        sui: "sui-address",
+        solana: "solana-address",
+      }}
+      amount={100}
+      paymentLinkId="payment123"
+      env="test"
+      paymentType="invoice"
+      userUUID="user-uuid"
+    />
+  );
+}
+```
+
+### Props
+
+| Prop Name                | Type     | Description                                 |
+| ------------------------ | -------- | ------------------------------------------- |
+| `onPaymentComplete`      | function | Callback for successful payments.           |
+| `onPaymentError`         | function | Callback for payment errors.                |
+| `buttonText`             | string   | Text for the payment button.                |
+| `buttonClassName`        | string   | CSS class for styling the button.           |
+| `recipientWalletAddress` | object   | Wallet addresses for different blockchains. |
+| `amount`                 | number   | Payment amount.                             |
+| `paymentLinkId`          | string   | ID of the payment link.                     |
+| `env`                    | string   | Environment (e.g., test, production).       |
+| `paymentType`            | string   | Type of payment (e.g., invoice, recurring). |
+| `userUUID`               | string   | User UUID for tracking payments.            |
+
+### Notes
+
+- Opens a popup for processing card payments via onramp services.
+- Tracks the payment status and updates the UI accordingly.
+
+---
+
+## SolanaWalletProvider
+
+A React context provider for integrating Solana blockchain wallets. This provider sets up the necessary configurations for connecting to Solana networks and managing wallet connections.
+
+### Usage
+
+```typescript
+import SolanaWalletProvider from "mileston-payment-client";
+
+function App() {
+  return (
+    <SolanaWalletProvider env="test">
+      {/* Your application components */}
+    </SolanaWalletProvider>
+  );
+}
+```
+
+### Props
+
+| Prop Name  | Type      | Description                                                |
+| ---------- | --------- | ---------------------------------------------------------- |
+| `children` | ReactNode | The child components that will consume the wallet context. |
+| `env`      | string    | The environment (e.g., "test", "prod").                    |
+
+### Notes
+
+- The `env` prop determines whether the provider connects to the mainnet or devnet.
+
+### Features
+
+- **Network Configuration**: Configures Solana networks (`mainnet` and `devnet`) using `clusterApiUrl`.
+- **Auto Connection**: Automatically connects to the wallet when the provider is initialized.
+- **Wallet Modal**: Provides a wallet modal for selecting and connecting wallets.
 
 ---

@@ -313,9 +313,11 @@ handleSuiPayment({
 
 ### Parameters
 
-| Parameter Name | Type   | Description                     |
-| -------------- | ------ | ------------------------------- |
-| `env`          | string | The environment (e.g., "prod"). |
+| Parameter Name           | Type   | Description                             |
+| ------------------------ | ------ | --------------------------------------- |
+| `env`                    | string | The environment (e.g., "test", "prod"). |
+| `amount`                 | string | The amount for the payment.             |
+| `recipientWalletAddress` | string | The recipient's wallet address.         |
 
 ### Returns
 
@@ -404,5 +406,81 @@ await verify(
 - This hook depends on the `MilestonPaymentProvider` for context, which provides `apikey` and `businessid`.
 - Use this hook to verify payments securely.
 - Handle errors gracefully to improve user experience.
+
+---
+
+## usePaymentContext
+
+Provides access to the `PaymentContext`, which contains the `apikey` and `businessid` passed to the `MilestonPaymentProvider`. This hook is essential for accessing these values in components or other hooks.
+
+### Usage
+
+```typescript
+import { usePaymentContext } from "mileston-payment-client";
+
+function MyComponent() {
+  const { apikey, businessid } = usePaymentContext();
+
+  return (
+    <div>
+      <p>API Key: {apikey}</p>
+      <p>Business ID: {businessid}</p>
+    </div>
+  );
+}
+```
+
+### Returns
+
+| Return Name  | Type   | Description                                                |
+| ------------ | ------ | ---------------------------------------------------------- |
+| `apikey`     | string | The API key provided to the `MilestonPaymentProvider`.     |
+| `businessid` | string | The business ID provided to the `MilestonPaymentProvider`. |
+
+### Notes
+
+- This hook must be used within a component wrapped by the `MilestonPaymentProvider`.
+- If used outside the provider, it will throw an error.
+
+---
+
+## useSolanaPayment
+
+A React hook for handling Solana blockchain payments.
+
+### Usage
+
+```typescript
+import { useSolanaPayment } from "mileston-payment-client";
+
+const { handleSolanaPayment } = useSolanaPayment("test");
+
+handleSolanaPayment({
+  amount: "100",
+  recipientWalletAddress: "RecipientAddress",
+  token: "SOL", // or "USDC", "USDT"
+});
+```
+
+### Parameters
+
+| Parameter Name           | Type   | Description                             |
+| ------------------------ | ------ | --------------------------------------- |
+| `env`                    | string | The environment (e.g., "test", "prod"). |
+| `amount`                 | string | The amount for the payment.             |
+| `recipientWalletAddress` | string | The recipient's wallet address.         |
+| `token`                  | string | The token type (e.g., "SOL", "USDC").   |
+
+### Returns
+
+| Return Name           | Type     | Description                           |
+| --------------------- | -------- | ------------------------------------- |
+| `handleSolanaPayment` | function | Function to initiate Solana payments. |
+
+### Notes
+
+- The `env` parameter determines whether the hook operates in a test or production environment.
+- Ensure the `recipientWalletAddress` is valid to avoid payment failures.
+- Use the `token` parameter to specify the token type for the payment.
 
 ---
