@@ -1,14 +1,14 @@
 {
   "version.label": {
-    "message": "Next",
+    "message": "Следующая",
     "description": "The label for version current"
   },
   "sidebar.tutorialSidebar.category.API Keys": {
-    "message": "API Keys",
+    "message": "API ключи",
     "description": "The label for category API Keys in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.API Keys.link.generated-index.description": {
-    "message": "Learn more about test and live API keys.",
+    "message": "Узнайте больше о тестовых и рабочих API ключах.",
     "description": "The generated-index page description for category API Keys in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Mileston SDKs": {
@@ -16,7 +16,7 @@
     "description": "The label for category Mileston SDKs in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Mileston SDKs.link.generated-index.description": {
-    "message": "Learn more about Mileston SDKs.",
+    "message": "Узнайте больше о Mileston SDKs.",
     "description": "The generated-index page description for category Mileston SDKs in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.🛠️ Mileston Payment Client SDK": {
@@ -24,7 +24,7 @@
     "description": "The label for category 🛠️ Mileston Payment Client SDK in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.webooks": {
-    "message": "webooks",
+    "message": "webhooks",
     "description": "The label for category webooks in sidebar tutorialSidebar"
   }
 }

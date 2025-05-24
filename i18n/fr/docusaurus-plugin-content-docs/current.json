@@ -1,30 +1,30 @@
 {
   "version.label": {
-    "message": "Next",
+    "message": "Prochaine",
     "description": "The label for version current"
   },
   "sidebar.tutorialSidebar.category.API Keys": {
-    "message": "API Keys",
+    "message": "Clés API",
     "description": "The label for category API Keys in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.API Keys.link.generated-index.description": {
-    "message": "Learn more about test and live API keys.",
+    "message": "En savoir plus sur les clés API de test et de production.",
     "description": "The generated-index page description for category API Keys in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Mileston SDKs": {
-    "message": "Mileston SDKs",
+    "message": "SDKs Mileston",
     "description": "The label for category Mileston SDKs in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Mileston SDKs.link.generated-index.description": {
-    "message": "Learn more about Mileston SDKs.",
+    "message": "En savoir plus sur les SDKs Mileston.",
     "description": "The generated-index page description for category Mileston SDKs in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.🛠️ Mileston Payment Client SDK": {
-    "message": "🛠️ Mileston Payment Client SDK",
+    "message": "🛠️ SDK Client de Paiement Mileston",
     "description": "The label for category 🛠️ Mileston Payment Client SDK in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.webooks": {
-    "message": "webooks",
+    "message": "webhooks",
     "description": "The label for category webooks in sidebar tutorialSidebar"
   }
 }
