@@ -77,6 +77,10 @@ const config: Config = {
         },
         { to: "/docs/category/api-keys", label: "Doc", position: "left" },
         {
+          type: "localeDropdown",
+          position: "right",
+        },
+        {
           href: "https://github.com/mileston-co/mb-docs",
           label: "GitHub",
           position: "right",
