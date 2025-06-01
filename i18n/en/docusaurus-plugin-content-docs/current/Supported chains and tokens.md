@@ -26,9 +26,22 @@ This document provides an overview of the blockchain networks (chains) and token
 | Solana    | USDC, USDT       |
 | Sui       | USDC             |
 
+## Native Tokens Supported on Checkout
+
+The following native tokens are supported **only on the Checkout** (not for payouts or settlements):
+
+- **Ethereum**: ETH
+- **Polygon**: MATIC
+- **Avalanche**: AVAX
+- **Base**: ETH
+- **Arbitrum**: ETH
+
+**Note:** Native tokens (ETH, MATIC, AVAX) are available **only for payment via the Checkout**. They are not available for payouts or settlements. USDC, USDT, and EURC remain the primary settlement tokens.
+
 ## Notes
 
 - **Tether (USDT)**: Not supported on testnets for most chains.
 - **Euro Coin (EURC)**: Supported on Ethereum, Polygon, Avalanche, and Base in both mainnet and testnet environments.
 - **Solana**: Uses token addresses instead of ABIs for USDC and USDT.
 - **Sui**: Supports USDC on both testnet and mainnet.
+- **Native tokens (ETH, MATIC, AVAX, etc.) are only available for payment on Checkout and not for payouts.**

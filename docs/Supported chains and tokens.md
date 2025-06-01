@@ -36,7 +36,7 @@ The following native tokens are supported **only on the Checkout** (not for payo
 - **Base**: ETH
 - **Arbitrum**: ETH
 
-> **Note:** Native tokens (ETH, MATIC, AVAX) are available **only for payment via the Checkout**. They are not available for payouts or settlements. USDC, USDT, and EURC remain the primary settlement tokens.
+**Note:** Native tokens (ETH, MATIC, AVAX) are available **only for payment via the Checkout**. They are not available for payouts or settlements. USDC, USDT, and EURC remain the primary settlement tokens.
 
 ## Notes
 
