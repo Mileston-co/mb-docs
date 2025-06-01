@@ -98,6 +98,50 @@ When an event is triggered, the webhook sends a `POST` request to your configure
   - **`status`**: The status of the payment (e.g., `paid`).
   - **`createdAt`**: The timestamp when the payment was created.
 
+---
+
+## Consuming Webhooks: Example Endpoint Implementation
+
+To receive and process webhook events, you need to create an HTTP endpoint in your application. The webhook service will send a POST request to this endpoint whenever an event you subscribed to is triggered.
+
+### **Verifying the Webhook Signature**
+
+Each webhook request includes an `X-Webhook-Signature` header. This header contains the verification token you provided when registering the webhook. You must verify this token in your endpoint to ensure the request is authentic.
+
+### **Example: Node.js/Express Endpoint**
+
+```javascript
+const express = require("express");
+const app = express();
+app.use(express.json());
+
+// Replace with your actual verification token from the dashboard
+const VERIFICATION_TOKEN = "your-verification-token";
+
+app.post("/your-webhook-endpoint", (req, res) => {
+  const signature = req.headers["x-webhook-signature"];
+  if (signature !== VERIFICATION_TOKEN) {
+    // Invalid token, reject the request
+    return res.status(401).json({ error: "Invalid webhook signature" });
+  }
+
+  // Process the webhook event
+  const { event, payload } = req.body;
+  // ... your logic here ...
+
+  // Always return 200 OK after successful processing
+  res.status(200).json({ received: true });
+});
+
+app.listen(3000, () => console.log("Webhook endpoint listening on port 3000"));
+```
+
+**Important:**
+
+- Always verify the `X-Webhook-Signature` header matches your verification token.
+- Always return HTTP 200 after successfully processing the webhook. If you return a non-200 status, the webhook will be retried.
+- Make sure your endpoint is accessible from the public internet.
+
 ## Support
 
 If you encounter any issues or have questions, please join our discord community: https://discord.gg/JT3BhUCy

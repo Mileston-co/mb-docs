@@ -10,14 +10,17 @@ Mit Mileston können Sie ganz einfach reale Krypto-Zahlungen simulieren – mit 
 
 ### Unterstützte Blockchains
 
-Mileston unterstützt derzeit die folgenden Blockchains für Zahlungen – **weitere folgen bald**:
+Mileston unterstützt derzeit die folgenden Blockchains für Zahlungen, und **weitere folgen bald**:
 
 - **Sui**
 - **Polygon**
 - **Ethereum**
 - **Base**
+- **Avalanche**
+- **Arbitrum**
+- **Solana**
 
-Keine Sorge um technische Details! Wir übernehmen die ganze Komplexität der Blockchain für Sie. Sie können sich ganz auf den Aufbau Ihrer Anwendung konzentrieren.
+Keine Sorge wegen technischer Details! Wir haben die ganze schwere Arbeit für Sie erledigt. Sie können sich auf die Entwicklung Ihrer Anwendung konzentrieren, während Mileston die Blockchain-Komplexität übernimmt.
 
 ---
 

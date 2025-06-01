@@ -16,6 +16,9 @@ Mileston prend actuellement en charge les blockchains suivantes pour les paiemen
 - **Polygon**
 - **Ethereum**
 - **Base**
+- **Avalanche**
+- **Arbitrum**
+- **Solana**
 
 Ne vous inquiétez pas des détails techniques ! Nous avons fait tout le travail complexe pour vous. Concentrez-vous sur le développement de votre application pendant que Mileston gère la complexité blockchain.
 

@@ -98,6 +98,52 @@ Lorsqu'un événement est déclenché, le webhook envoie une requête `POST` à 
   - **`status`** : Le statut du paiement (ex : `paid`).
   - **`createdAt`** : L'horodatage de la création du paiement.
 
+---
+
+## Consommer les webhooks : exemple d'implémentation d'endpoint
+
+Pour recevoir et traiter les événements webhook, vous devez créer un endpoint HTTP dans votre application. Le service webhook enverra une requête POST à cet endpoint chaque fois qu'un événement auquel vous êtes abonné est déclenché.
+
+### **Vérification de la signature du webhook**
+
+Chaque requête webhook inclut un en-tête `X-Webhook-Signature`. Cet en-tête contient le jeton de vérification que vous avez fourni lors de l'enregistrement du webhook. Vous devez vérifier ce jeton dans votre endpoint pour garantir l'authenticité de la requête.
+
+### **Exemple : Endpoint Node.js/Express**
+
+```javascript
+const express = require("express");
+const app = express();
+app.use(express.json());
+
+// Remplacez par votre vrai jeton de vérification depuis le dashboard
+const VERIFICATION_TOKEN = "votre-jeton-de-verification";
+
+app.post("/votre-endpoint-webhook", (req, res) => {
+  const signature = req.headers["x-webhook-signature"];
+  if (signature !== VERIFICATION_TOKEN) {
+    // Jeton invalide, rejeter la requête
+    return res.status(401).json({ error: "Signature de webhook invalide" });
+  }
+
+  // Traitez l'événement webhook
+  const { event, payload } = req.body;
+  // ... votre logique ici ...
+
+  // Toujours retourner 200 OK après un traitement réussi
+  res.status(200).json({ received: true });
+});
+
+app.listen(3000, () =>
+  console.log("Endpoint webhook en écoute sur le port 3000")
+);
+```
+
+**Important :**
+
+- Vérifiez toujours que l'en-tête `X-Webhook-Signature` correspond à votre jeton de vérification.
+- Retournez toujours HTTP 200 après avoir traité le webhook avec succès. Si vous retournez un statut différent de 200, le webhook sera retenté.
+- Assurez-vous que votre endpoint est accessible depuis Internet.
+
 ## Support
 
 Si vous rencontrez des problèmes ou avez des questions, rejoignez notre communauté Discord : https://discord.gg/JT3BhUCy

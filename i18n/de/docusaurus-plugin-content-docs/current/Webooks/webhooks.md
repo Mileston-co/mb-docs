@@ -98,6 +98,50 @@ Wenn ein Ereignis ausgelöst wird, sendet der Webhook eine `POST`-Anfrage an Ihr
   - **`status`**: Der Status der Zahlung (z. B. `paid`).
   - **`createdAt`**: Der Zeitstempel, wann die Zahlung erstellt wurde.
 
+---
+
+## Webhooks konsumieren: Beispiel für eine Endpoint-Implementierung
+
+Um Webhook-Ereignisse zu empfangen und zu verarbeiten, müssen Sie einen HTTP-Endpunkt in Ihrer Anwendung erstellen. Der Webhook-Service sendet eine POST-Anfrage an diesen Endpunkt, wenn ein abonniertes Ereignis ausgelöst wird.
+
+### **Webhook-Signatur verifizieren**
+
+Jede Webhook-Anfrage enthält einen Header `X-Webhook-Signature`. Dieser Header enthält das Verifizierungstoken, das Sie bei der Registrierung des Webhooks angegeben haben. Sie müssen dieses Token in Ihrem Endpoint überprüfen, um die Authentizität der Anfrage sicherzustellen.
+
+### **Beispiel: Node.js/Express Endpoint**
+
+```javascript
+const express = require("express");
+const app = express();
+app.use(express.json());
+
+// Ersetzen Sie dies durch Ihr tatsächliches Verifizierungstoken aus dem Dashboard
+const VERIFICATION_TOKEN = "ihr-verifizierungstoken";
+
+app.post("/ihr-webhook-endpunkt", (req, res) => {
+  const signature = req.headers["x-webhook-signature"];
+  if (signature !== VERIFICATION_TOKEN) {
+    // Ungültiges Token, Anfrage ablehnen
+    return res.status(401).json({ error: "Ungültige Webhook-Signatur" });
+  }
+
+  // Webhook-Ereignis verarbeiten
+  const { event, payload } = req.body;
+  // ... Ihre Logik hier ...
+
+  // Immer 200 OK nach erfolgreicher Verarbeitung zurückgeben
+  res.status(200).json({ received: true });
+});
+
+app.listen(3000, () => console.log("Webhook-Endpunkt hört auf Port 3000"));
+```
+
+**Wichtig:**
+
+- Überprüfen Sie immer, dass der Header `X-Webhook-Signature` mit Ihrem Verifizierungstoken übereinstimmt.
+- Geben Sie immer HTTP 200 zurück, nachdem der Webhook erfolgreich verarbeitet wurde. Wenn Sie einen anderen Status als 200 zurückgeben, wird der Webhook erneut gesendet.
+- Stellen Sie sicher, dass Ihr Endpoint aus dem Internet erreichbar ist.
+
 ## Support
 
 Wenn Sie auf Probleme stoßen oder Fragen haben, treten Sie bitte unserer Discord-Community bei: https://discord.gg/JT3BhUCy

@@ -2,66 +2,66 @@
 
 ---
 
-## Overview
+## Обзор
 
-Webhooks allow you to receive real-time notifications when specific events occur in the Mileston Business platform. You can use webhooks to automate workflows, update your database, or trigger other actions in your application.
+Webhooks позволяют получать уведомления в реальном времени, когда на платформе Mileston Business происходят определённые события. Вы можете использовать webhooks для автоматизации рабочих процессов, обновления базы данных или запуска других действий в вашем приложении.
 
-The **Developers Tab** in the Mileston Business dashboard provides an interface to manage your webhooks, including registering new webhooks, viewing existing ones, and deleting them.
-
----
-
-## Accessing the Developers Tab
-
-1. Log in to your Mileston Business account.
-2. Navigate to the **Developers Tab** in the sidebar menu.
-3. Under the **Webhooks** section, you will find options to manage your webhooks.
+Вкладка **Developers** в дашборде Mileston Business предоставляет интерфейс для управления webhooks, включая регистрацию новых, просмотр существующих и их удаление.
 
 ---
 
-## Setting Up Webhooks
+## Доступ к вкладке Developers
 
-### **Step 1: Register a Webhook**
-
-1. In the **Developers Tab**, go to the **Webhooks** section.
-2. Click on the **Register Webhook** button.
-3. Fill in the following details:
-
-   - **Endpoint URL**: The URL of your webhook endpoint where events will be sent.
-   - **Verification Token**: A token that will be used to verify the authenticity of webhook requests.
-   - **Events**: Select the events you want to subscribe to. If no events are selected, the default events (`invoice-paid`, `paymentlink-paid`, `recurring-paid`) will be used.
-
-4. Click **Save** to register the webhook.
+1. Войдите в свой аккаунт Mileston Business.
+2. Перейдите во вкладку **Developers** в боковом меню.
+3. В разделе **Webhooks** вы найдёте опции для управления webhooks.
 
 ---
 
-### **Step 2: View Registered Webhooks**
+## Настройка webhooks
 
-In the **Webhooks** section of the **Developers Tab**, you will see a list of all registered webhooks.
+### **Шаг 1: Регистрация webhook**
 
----
+1. Во вкладке **Developers** перейдите в раздел **Webhooks**.
+2. Нажмите кнопку **Register Webhook**.
+3. Заполните следующие поля:
 
-### **Step 3: Delete a Webhook**
+   - **Endpoint URL**: URL вашего endpoint, куда будут отправляться события.
+   - **Verification Token**: Токен для проверки подлинности запросов webhook.
+   - **Events**: Выберите события для подписки. Если не выбрано, по умолчанию используются (`invoice-paid`, `paymentlink-paid`, `recurring-paid`).
 
-1. Locate the webhook you want to delete in the list of registered webhooks.
-2. Click the **Delete** button next to the webhook.
-
----
-
-## Webhook Events
-
-The following events are supported:
-
-- **`invoice-paid`**: Triggered when an invoice is paid.
-- **`paymentlink-paid`**: Triggered when a payment link is paid.
-- **`recurring-paid`**: Triggered when a recurring payment is paid.
+4. Нажмите **Save** для регистрации webhook.
 
 ---
 
-## Webhook Payload
+### **Шаг 2: Просмотр зарегистрированных webhooks**
 
-When an event is triggered, the webhook sends a `POST` request to your configured endpoint with the following payload structure:
+В разделе **Webhooks** вкладки **Developers** отображается список всех зарегистрированных webhooks.
 
-### Example Payload for `paymentlink-paid`
+---
+
+### **Шаг 3: Удаление webhook**
+
+1. Найдите нужный webhook в списке зарегистрированных.
+2. Нажмите кнопку **Delete** рядом с ним.
+
+---
+
+## События webhook
+
+Поддерживаются следующие события:
+
+- **`invoice-paid`**: Срабатывает при оплате счёта.
+- **`paymentlink-paid`**: Срабатывает при оплате платёжной ссылки.
+- **`recurring-paid`**: Срабатывает при оплате регулярного платежа.
+
+---
+
+## Payload webhook
+
+Когда событие срабатывает, webhook отправляет `POST`-запрос на ваш endpoint со следующей структурой:
+
+### Пример payload для `paymentlink-paid`
 
 ```json
 {
@@ -82,22 +82,66 @@ When an event is triggered, the webhook sends a `POST` request to your configure
 }
 ```
 
-### Field Descriptions
+### Описание полей
 
-- **`event`**: The name of the event that was triggered (`paymentlink-paid` in this case).
-- **`payload`**: The data associated with the event, which includes:
-  - **`paymentLinkId`**: The unique identifier of the payment link.
-  - **`payer`**: The wallet address of the payer.
-  - **`recipientWalletAddress`**: The wallet address of the recipient.
-  - **`amount`**: The amount paid.
-  - **`userUUID`**: The unique identifier of the user associated with the payment link.
-  - **`transactionSignature`**: The transaction signature for the payment.
-  - **`feeSignature`**: The signature for the fee associated with the transaction.
-  - **`chain`**: The blockchain network where the transaction occurred (e.g., `pol` for Polygon).
-  - **`env`**: The environment in which the transaction occurred (`test` or `prod`).
-  - **`status`**: The status of the payment (e.g., `paid`).
-  - **`createdAt`**: The timestamp when the payment was created.
+- **`event`**: Имя сработавшего события (`paymentlink-paid`).
+- **`payload`**: Данные, связанные с событием, включая:
+  - **`paymentLinkId`**: Уникальный идентификатор платёжной ссылки.
+  - **`payer`**: Адрес кошелька плательщика.
+  - **`recipientWalletAddress`**: Адрес кошелька получателя.
+  - **`amount`**: Сумма платежа.
+  - **`userUUID`**: Уникальный идентификатор пользователя, связанного с платёжной ссылкой.
+  - **`transactionSignature`**: Подпись транзакции платежа.
+  - **`feeSignature`**: Подпись комиссии, связанной с транзакцией.
+  - **`chain`**: Блокчейн-сеть, где произошла транзакция (например, `pol` для Polygon).
+  - **`env`**: Окружение, в котором произошла транзакция (`test` или `prod`).
+  - **`status`**: Статус платежа (например, `paid`).
+  - **`createdAt`**: Время создания платежа.
 
-## Support
+---
 
-If you encounter any issues or have questions, please join our discord community: https://discord.gg/JT3BhUCy
+## Пример реализации endpoint для приёма webhook
+
+Чтобы получать и обрабатывать события webhook, создайте HTTP endpoint в вашем приложении. Сервис webhook будет отправлять POST-запрос на этот endpoint при каждом срабатывании события, на которое вы подписаны.
+
+### **Проверка подписи webhook**
+
+Каждый запрос webhook содержит заголовок `X-Webhook-Signature`. В нём передаётся verification token, который вы указали при регистрации webhook. Необходимо проверять этот токен в endpoint для подтверждения подлинности запроса.
+
+### **Пример: Node.js/Express Endpoint**
+
+```javascript
+const express = require("express");
+const app = express();
+app.use(express.json());
+
+// Замените на ваш реальный verification token из dashboard
+const VERIFICATION_TOKEN = "ваш-verification-token";
+
+app.post("/ваш-webhook-endpoint", (req, res) => {
+  const signature = req.headers["x-webhook-signature"];
+  if (signature !== VERIFICATION_TOKEN) {
+    // Неверный токен, отклонить запрос
+    return res.status(401).json({ error: "Неверная подпись webhook" });
+  }
+
+  // Обработка события webhook
+  const { event, payload } = req.body;
+  // ... ваша логика ...
+
+  // Всегда возвращайте 200 OK после успешной обработки
+  res.status(200).json({ received: true });
+});
+
+app.listen(3000, () => console.log("Webhook endpoint слушает на порту 3000"));
+```
+
+**Важно:**
+
+- Всегда проверяйте, что заголовок `X-Webhook-Signature` совпадает с вашим verification token.
+- Всегда возвращайте HTTP 200 после успешной обработки webhook. Если вернуть другой статус, webhook будет отправлен повторно.
+- Убедитесь, что ваш endpoint доступен из интернета.
+
+## Поддержка
+
+Если у вас возникли вопросы или проблемы, присоединяйтесь к нашему Discord-сообществу: https://discord.gg/JT3BhUCy
