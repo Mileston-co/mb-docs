@@ -27,7 +27,7 @@ All Mileston services provide a `/status` endpoint for health monitoring:
 
 - **User Service**: `https://user-service.mileston.co/status` (Production)
 - **Checkout Service**: `https://checkout-service.mileston.co/status` (Production)
-- **Developers Service**: `https://developers-service.mileston.co/status` (Production)
+- **Developer Service**: `https://developer-service.mileston.co/status` (Production)
 - **Invoice Service**: `https://invoice-service.mileston.co/status` (Production)
 - **Payment Service**: `https://payment-service.mileston.co/status` (Production)
 - **Recurring Service**: `https://recurring-service.mileston.co/status` (Production)
@@ -85,7 +85,7 @@ curl -X GET https://payment-service.mileston.co/status
 const services = [
   'https://user-service.mileston.co/status',
   'https://checkout-service.mileston.co/status',
-  'https://developers-service.mileston.co/status',
+  'https://developer-service.mileston.co/status',
   'https://invoice-service.mileston.co/status',
   'https://payment-service.mileston.co/status',
   'https://recurring-service.mileston.co/status'
@@ -118,7 +118,7 @@ const axios = require('axios');
 const services = [
   { name: 'User Service', url: 'https://user-service.mileston.co/status' },
   { name: 'Checkout Service', url: 'https://checkout-service.mileston.co/status' },
-  { name: 'Developers Service', url: 'https://developers-service.mileston.co/status' },
+  { name: 'Developer Service', url: 'https://developer-service.mileston.co/status' },
   { name: 'Invoice Service', url: 'https://invoice-service.mileston.co/status' },
   { name: 'Payment Service', url: 'https://payment-service.mileston.co/status' },
   { name: 'Recurring Service', url: 'https://recurring-service.mileston.co/status' }
@@ -228,6 +228,16 @@ spec:
 2. Verify the port is correct
 3. Check firewall settings
 4. Verify DNS resolution for service URLs
+
+### CORS Issues (HTTP 500 Errors)
+Checkout service may return HTTP 500 errors when called without proper CORS headers. To resolve this:
+
+1. **Include Origin Header**: Add the `Origin` header to your requests
+2. **Use Frontend Requests**: Make requests from your frontend application
+3. **Example with Origin Header**:
+   ```bash
+   curl -H "Origin: https://your-domain.com" https://checkout-service.mileston.co/status
+   ```
 
 ### High Memory Usage
 1. Monitor memory trends over time
