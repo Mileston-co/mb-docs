@@ -22,7 +22,15 @@ GET /status
 ```
 
 ### Service Availability
+
+All Mileston services provide a `/status` endpoint for health monitoring:
+
 - **User Service**: `https://user-service.mileston.co/status` (Production)
+- **Checkout Service**: `https://checkout-service.mileston.co/status` (Production)
+- **Developers Service**: `https://developers-service.mileston.co/status` (Production)
+- **Invoice Service**: `https://invoice-service.mileston.co/status` (Production)
+- **Payment Service**: `https://payment-service.mileston.co/status` (Production)
+- **Recurring Service**: `https://recurring-service.mileston.co/status` (Production)
 
 ## Response Format
 
@@ -31,7 +39,7 @@ The endpoint returns a JSON object with the following structure:
 ```json
 {
   "status": "healthy",
-  "service": "all-services",
+  "service": "user-service",
   "timestamp": "2024-01-15T10:30:00.000Z",
   "environment": "development",
   "version": "1.0.0",
@@ -48,7 +56,7 @@ The endpoint returns a JSON object with the following structure:
 | Field | Type | Description |
 |-------|------|-------------|
 | `status` | string | Service health status (`healthy` or `unhealthy`) |
-| `service` | string | Service identifier (`all-services`) |
+| `service` | string | Service identifier (e.g., `user-service`, `checkout-service`) |
 | `timestamp` | string | ISO 8601 timestamp of the check |
 | `environment` | string | Current environment (`development`, `production`, etc.) |
 | `version` | string | Service version number |
@@ -61,27 +69,44 @@ The endpoint returns a JSON object with the following structure:
 ### Basic Health Check
 
 ```bash
+# Check User Service
 curl -X GET https://user-service.mileston.co/status
+
+# Check Checkout Service
+curl -X GET https://checkout-service.mileston.co/status
+
+# Check Payment Service
+curl -X GET https://payment-service.mileston.co/status
 ```
 
 ### Using JavaScript/Fetch
 
 ```javascript
-async function checkServiceHealth() {
-  try {
-    const response = await fetch('https://user-service.mileston.co/status');
-    const data = await response.json();
-    
-    if (data.status === 'healthy') {
-      console.log('✅ Service is healthy');
-      console.log(`Uptime: ${data.uptime} seconds`);
-      console.log(`Memory usage: ${data.memory.used}MB / ${data.memory.total}MB`);
+const services = [
+  'https://user-service.mileston.co/status',
+  'https://checkout-service.mileston.co/status',
+  'https://developers-service.mileston.co/status',
+  'https://invoice-service.mileston.co/status',
+  'https://payment-service.mileston.co/status',
+  'https://recurring-service.mileston.co/status'
+];
+
+async function checkAllServices() {
+  const results = await Promise.allSettled(
+    services.map(url => fetch(url).then(res => res.json()))
+  );
+  
+  results.forEach((result, index) => {
+    const serviceName = services[index].split('/')[2];
+    if (result.status === 'fulfilled') {
+      const data = result.value;
+      console.log(`✅ ${serviceName}: ${data.status}`);
+      console.log(`   Uptime: ${data.uptime} seconds`);
+      console.log(`   Memory: ${data.memory.used}MB / ${data.memory.total}MB`);
     } else {
-      console.log('❌ Service is unhealthy');
+      console.log(`❌ ${serviceName}: Failed to check`);
     }
-  } catch (error) {
-    console.error('Failed to check service health:', error);
-  }
+  });
 }
 ```
 
@@ -90,22 +115,33 @@ async function checkServiceHealth() {
 ```javascript
 const axios = require('axios');
 
-async function monitorService() {
-  try {
-    const response = await axios.get('https://user-service.mileston.co/status');
-    const { status, uptime, memory, environment } = response.data;
-    
-    console.log(`Service Status: ${status}`);
-    console.log(`Environment: ${environment}`);
-    console.log(`Uptime: ${Math.floor(uptime / 60)} minutes`);
-    console.log(`Memory: ${memory.used}MB / ${memory.total}MB`);
-    
-    return status === 'healthy';
-  } catch (error) {
-    console.error('Service health check failed:', error.message);
-    return false;
+const services = [
+  { name: 'User Service', url: 'https://user-service.mileston.co/status' },
+  { name: 'Checkout Service', url: 'https://checkout-service.mileston.co/status' },
+  { name: 'Developers Service', url: 'https://developers-service.mileston.co/status' },
+  { name: 'Invoice Service', url: 'https://invoice-service.mileston.co/status' },
+  { name: 'Payment Service', url: 'https://payment-service.mileston.co/status' },
+  { name: 'Recurring Service', url: 'https://recurring-service.mileston.co/status' }
+];
+
+async function monitorAllServices() {
+  for (const service of services) {
+    try {
+      const response = await axios.get(service.url);
+      const { status, uptime, memory, environment } = response.data;
+      
+      console.log(`\n${service.name}:`);
+      console.log(`  Status: ${status}`);
+      console.log(`  Environment: ${environment}`);
+      console.log(`  Uptime: ${Math.floor(uptime / 60)} minutes`);
+      console.log(`  Memory: ${memory.used}MB / ${memory.total}MB`);
+    } catch (error) {
+      console.log(`\n${service.name}: ❌ Failed to check`);
+      console.log(`  Error: ${error.message}`);
+    }
   }
 }
+
 ```
 
 ## Integration with Monitoring Tools
@@ -113,9 +149,36 @@ async function monitorService() {
 ### Docker Health Check
 
 ```dockerfile
-# Add to your Dockerfile
+# Add to your Dockerfile for each service
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
   CMD curl -f https://user-service.mileston.co/status || exit 1
+```
+
+### Kubernetes Health Check
+
+```yaml
+# Example for User Service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-service
+spec:
+  template:
+    spec:
+      containers:
+      - name: user-service
+        livenessProbe:
+          httpGet:
+            path: /status
+            port: 4000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /status
+            port: 4000
+          initialDelaySeconds: 5
+          periodSeconds: 5
 ```
 
 ## Error Handling
@@ -142,14 +205,21 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
 
 ### 1. Regular Monitoring
 - Set up alerts for unhealthy status responses
-- Monitor memory usage trends
+- Monitor memory usage trends across all services
+- Use automated monitoring tools to check all endpoints
 
 ### 2. Logging
 - Log status check results for debugging
-- Track uptime and performance metrics
+- Track uptime and performance metrics for each service
+- Implement centralized logging for all service health checks
+
+### 3. Load Balancing
+- Use health checks for load balancer configuration
+- Implement circuit breakers based on status responses
 
 ### 4. Security
 - Use HTTPS in production environments
+- Implement rate limiting on status endpoints if needed
 
 ## Troubleshooting
 
@@ -157,9 +227,17 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
 1. Check if the service is running
 2. Verify the port is correct
 3. Check firewall settings
+4. Verify DNS resolution for service URLs
 
 ### High Memory Usage
 1. Monitor memory trends over time
+2. Check for memory leaks in specific services
+3. Implement memory alerts
+
+### Multiple Services Down
+1. Check shared infrastructure (database, message queues)
+2. Verify network connectivity between services
+3. Check for cascading failures
 
 
 ## Related Documentation
