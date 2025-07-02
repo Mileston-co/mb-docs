@@ -83,7 +83,6 @@ const sendPayoutPayload = {
   amount: "100.00",
   recipientAddress: "0xRecipientWalletAddress",
   walletType: "eth", // Supported wallet types: "sui", "eth", "avax", "pol", "base", "arb"
-  secretPhrase: "optional-secret-phrase", // Optional: Use for wallets with copied secrets
 };
 
 const payoutResponse = await payout.sendPayment(sendPayoutPayload);
@@ -99,10 +98,8 @@ console.log("Payout Response:", payoutResponse);
 - **`pol`**: Polygon wallet.
 - **`base`**: Base blockchain wallet.
 - **`arb`**: Arbitrum wallet.
+- **`solana`**: Solana wallet.
 
-#### Optional Field: `secretPhrase`
-
-- **`secretPhrase`**: Use this field if the recipient's wallet requires a secret phrase for transactions. This is optional and only needed for wallets with copied secrets.
 
 ---
 
