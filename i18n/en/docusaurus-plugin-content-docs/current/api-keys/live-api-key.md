@@ -16,7 +16,7 @@ The **Live API Key** is your gateway to receiving real payments in **USDC**, dir
 Here’s what you can do with a live API key:
 
 - **Receive Real Payments**: Accept crypto payments from your users.
-- **Effortless Payouts**: Payments are settled in **USDC** and credited to your business wallet on the **SUI network**.
+- **Effortless Payouts**: Payments are settled in **USDC** and credited to your business wallet on the **Supported network**.
 - **Seamless Blockchain Support**: Mileston handles all the blockchain complexities for you—so you can focus on scaling your business. 🚀
 
 ---
@@ -44,9 +44,9 @@ Before going live, ensure you’ve thoroughly tested your setup with the **Test 
 
 ---
 
-### Why USDC on SUI?
+### Why USDC?
 
-We’ve streamlined everything to ensure your crypto payments are reliable, fast, and cost-effective. All payments are settled on the **SUI network**, providing:
+We’ve streamlined everything to ensure your crypto payments are reliable, fast, and cost-effective. All payments are settled on the **supported network**, providing:
 
 - **Low Transaction Fees**
 - **High Throughput for Scalability**

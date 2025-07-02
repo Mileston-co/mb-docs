@@ -16,6 +16,9 @@ Mileston currently supports the following blockchains for payments, with **more 
 - **Polygon**
 - **Ethereum**
 - **Base**
+- **Avalanche**
+- **Arbitrum**
+- **Solana**
 
 Don’t sweat the technical details! We’ve done all the heavy lifting for you. You just need to focus on building your application while Mileston handles the blockchain complexities.
 
