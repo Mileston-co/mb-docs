@@ -32,6 +32,8 @@ All Mileston services provide a `/status` endpoint for health monitoring:
 - **Payment Service**: `https://payment-service.mileston.co/status` (Production)
 - **Recurring Service**: `https://recurring-service.mileston.co/status` (Production)
 
+**📊 Status Dashboard**: For a real-time overview of all services, visit [status.mileston.co](https://status.mileston.co) - no API calls required!
+
 ## Response Format
 
 The endpoint returns a JSON object with the following structure:
