@@ -23,7 +23,7 @@ This document provides an overview of the blockchain networks (chains) and token
 | Avalanche | USDC, EURC       |
 | Arbitrum  | USDC             |
 | Base      | USDC, EURC       |
-| Solana    | USDC, USDT       |
+| Solana    | USDC             |
 | Sui       | USDC             |
 
 ## Native Tokens Supported on Checkout
@@ -64,6 +64,11 @@ Certain tokens are not available on testnet environments due to the following re
 - **Reason**: Testnet POL tokens lack the liquidity needed for smart contract swaps
 - **Impact**: Payment processing would fail when attempting to swap testnet POL
 - **Solution**: Use USDC for testnet payments on Polygon
+
+#### **SOL (Solana)**
+- **Reason**: Testnet SOL tokens cannot be reliably swapped through smart contracts
+- **Impact**: Payment processing would fail during token conversion on Solana testnet
+- **Solution**: Use USDC for testnet payments on Solana
 
 ### What This Means for Developers
 

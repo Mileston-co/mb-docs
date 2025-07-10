@@ -27,6 +27,7 @@ The following tokens are not available on testnet environments:
 | **ETH** | Ethereum | Testnet ETH has no real value for smart contract swaps |
 | **AVAX** | Avalanche | Testnet AVAX cannot be swapped through smart contracts |
 | **POL** | Polygon | Testnet POL lacks liquidity for smart contract swaps |
+| **SOL** | Solana | Testnet SOL cannot be reliably swapped through smart contracts |
 
 ## Impact on Development
 
@@ -116,7 +117,7 @@ function MyPaymentPage() {
 
 | Environment | Available Tokens | Unavailable Tokens |
 |-------------|------------------|-------------------|
-| **Testnet** | USDC, EURC | USDT, ETH, AVAX, POL |
+| **Testnet** | USDC, EURC | USDT, ETH, AVAX, POL, SOL |
 | **Mainnet** | All tokens | None |
 
 ## Troubleshooting
