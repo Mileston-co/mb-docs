@@ -14,6 +14,7 @@ Welcome to the **Mileston Payments JavaScript/TypeScript Backend SDK**—your ul
 - **Send Payouts:** Transfer funds directly to recipients' wallets.
 - **Generate and Update Invoices:** From client billing to reminders, stay on top of your payments.
 - **Handle Recurring Payments:** Automate those monthly, weekly, or even daily payments like a pro.
+- **Wallet Management:** Create and manage multi-chain wallets, sub-wallets, and batch payments.
 - **Secure and Reliable:** Sleep soundly knowing your payments are safe.
 - **Developer-Friendly:** Simple, intuitive, and just works out of the box.
 
@@ -39,15 +40,18 @@ import {
   PayoutAPI,
   Invoice,
   RecurringPayment,
+  Wallet,
 } from "mileston-payments";
 
 const apiKey = "your-api-key"; // Get this from your dashboard
 const businessId = "your-business-id"; // Get this from the modal that pops when you click your profile
+const secretKey = "your-secret-key"; // Get this when generating wallet API keys
 
 const paymentLink = new PaymentLink(apiKey, businessId);
 const payout = new PayoutAPI(apiKey, businessId);
 const invoice = new Invoice(apiKey, businessId);
 const recurringPayment = new RecurringPayment(apiKey, businessId);
+const wallet = new Wallet(apiKey, businessId, secretKey);
 ```
 
 ---
@@ -316,6 +320,29 @@ You can check how this app [https://sui-invoice.vercel.app/](https://sui-invoice
   Update recurring payment details.
 - **`getAll(): Promise<GetAllRecurringPaymentResponse>`**  
   Retrieve all active recurring payments.
+
+### **`Wallet` Class**
+
+- **`sendPayment(payload: SendFundsPayload): Promise<SendFundsResponse>`**  
+  Send a payment from the main wallet.
+- **`createSubWallet(): Promise<CreateSubWalletResponseData>`**  
+  Create a new sub-wallet.
+- **`createNewSubWallet(payload: CreateSubWalletPayload): Promise<CreateNewSubWalletResponseData>`**  
+  Create a new sub-wallet with specific type.
+- **`getSubWallet(subWalletUuid: string): Promise<GetSubWalletResponseData>`**  
+  Get details of a specific sub-wallet.
+- **`getAllSubWallets(): Promise<WalletResponse>`**  
+  Get all sub-wallets.
+- **`sendFunds(subWalletUuid: string, payload: SendFundsPayload): Promise<SendFundsResponse>`**  
+  Send funds from a specific sub-wallet.
+- **`deleteSubWallet(subWalletUuid: string): Promise<WalletResponse>`**  
+  Delete a sub-wallet.
+- **`batchPayment(payload: BatchPaymentPayload): Promise<BatchPaymentResponse>`**  
+  Send batch payments from the main wallet.
+- **`getTransactionStatus(transactionUuid: string): Promise<TransactionStatusResponse>`**  
+  Get transaction status by UUID.
+
+> 📖 **For detailed Wallet API documentation, see [Wallet API Documentation](./wallet-api.md).**
 
 ---
 
