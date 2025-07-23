@@ -209,29 +209,25 @@ console.log("All Wallets:", allWallets);
 // Output: {
 //   statusCode: 200,
 //   message: "Wallet data retrieved successfully",
-//   data: {
-//     walletData: [
-//       { id: 0, blockchain: "Sui", address: "...", balance: 100 },
-//       { id: 1, blockchain: "Avalanche", address: "...", balance: 50 },
-//       // ...
-//     ]
-//   }
+//   walletData: [
+//     { id: 0, blockchain: "Sui", address: "...", balance: 100 },
+//     { id: 1, blockchain: "Avalanche", address: "...", balance: 50 },
+//     // ...
+//   ]
 // }
 ```
 
 **Returns:**
 ```typescript
-interface WalletResponse<T = any> {
+interface GetAllWalletsResponse {
   statusCode: number;
   message: string;
-  data: {
-    walletData: {
-      id: number;
-      blockchain: string;
-      address: string;
-      balance: number;
-    }[];
-  };
+  walletData: {
+    id: number;
+    blockchain: string;
+    address: string;
+    balance: number;
+  }[];
 }
 ```
 
