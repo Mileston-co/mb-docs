@@ -199,6 +199,43 @@ console.log("Delete Response:", deleteResponse);
 // Output: { statusCode: 200, message: "Sub-wallet deleted successfully", data: {} }
 ```
 
+### 📋 8. **Get All Wallets**
+
+Retrieve all wallets and their balances for the authenticated user:
+
+```typescript
+const allWallets = await wallet.getAllWallets();
+console.log("All Wallets:", allWallets);
+// Output: {
+//   statusCode: 200,
+//   message: "Wallet data retrieved successfully",
+//   data: {
+//     walletData: [
+//       { id: 0, blockchain: "Sui", address: "...", balance: 100 },
+//       { id: 1, blockchain: "Avalanche", address: "...", balance: 50 },
+//       // ...
+//     ]
+//   }
+// }
+```
+
+**Returns:**
+```typescript
+interface WalletResponse<T = any> {
+  statusCode: number;
+  message: string;
+  data: {
+    walletData: {
+      id: number;
+      blockchain: string;
+      address: string;
+      balance: number;
+    }[];
+  };
+}
+```
+
+
 ---
 
 ## 🌟 Real-World Examples
